@@ -27,7 +27,7 @@ const problems = [
 
 const ProblemsSection = () => {
   return (
-    <section className="relative py-24 section-glow">
+    <section id="problemas" className="relative py-24 section-glow scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="container px-6">
         <motion.div

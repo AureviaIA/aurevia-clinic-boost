@@ -37,7 +37,7 @@ const stats = [
 
 const SolutionsSection = () => {
   return (
-    <section className="relative py-24 bg-secondary/20 section-glow">
+    <section id="soluciones" className="relative py-24 bg-secondary/20 section-glow scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="container px-6">
         <motion.div
