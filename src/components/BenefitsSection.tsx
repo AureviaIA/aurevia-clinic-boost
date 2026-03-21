@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TrendingUp, Headphones, Settings, Timer } from "lucide-react";
+import aureviaLogo from "@/assets/aurevia-logo.png";
 import { Button } from "@/components/ui/button";
 
 const benefits = [
