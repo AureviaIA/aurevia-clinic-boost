@@ -1,27 +1,28 @@
 import { motion } from "framer-motion";
-import { UserX, Cog, BellOff, CalendarX } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Clock, MessageSquareWarning, Monitor, CalendarX } from "lucide-react";
+
+const WA_LINK = "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
 
 const problems = [
   {
-    icon: UserX,
-    title: "Leads sin respuesta",
-    description: "¿Sabías que más del 40% de tus leads se pierden por falta de respuesta rápida?",
+    icon: Clock,
+    title: "Pacientes sin respuesta a tiempo",
+    description: "Más del 40% de tus leads se pierden porque no reciben respuesta rápida.",
   },
   {
-    icon: Cog,
-    title: "Procesos manuales",
-    description: "El trabajo manual consume un tiempo valioso y reduce tu eficiencia.",
+    icon: MessageSquareWarning,
+    title: "WhatsApp saturado → citas perdidas",
+    description: "Los mensajes se acumulan y las oportunidades se van con la competencia.",
   },
   {
-    icon: BellOff,
-    title: "Falta de seguimiento",
-    description: "Los pacientes potenciales se olvidan de ti sin un sistema de seguimiento efectivo.",
+    icon: Monitor,
+    title: "Recepción desbordada",
+    description: "Tu equipo no da abasto respondiendo consultas, gestionando agendas y atendiendo pacientes.",
   },
   {
     icon: CalendarX,
-    title: "No-shows en citas",
-    description: "El 30% de tus pacientes agendados no se presentan, perdiendo oportunidades valiosas.",
+    title: "Pacientes que no se presentan",
+    description: "El 30% de tus pacientes agendados no se presentan, perdiendo ingresos y horas.",
   },
 ];
 
@@ -41,46 +42,59 @@ const ProblemsSection = () => {
             ¿Te suenan <span className="gold-gradient-text">estos problemas</span>?
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body">
-            Los desafíos que enfrentan las clínicas cada día — y que la IA puede resolver.
+            Los desafíos diarios que le cuestan dinero a tu clínica — y que la IA puede resolver.
           </p>
         </motion.div>
 
-        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {/* Connector line */}
-          <div className="hidden lg:block absolute top-16 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-14">
           {problems.map((problem, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.5 }}
-              className="relative flex flex-col items-center text-center p-6 rounded-2xl gold-border-glow bg-card"
+              transition={{ delay: i * 0.12, duration: 0.5 }}
+              className="flex gap-5 p-6 rounded-2xl gold-border-glow bg-card"
             >
-              <div className="relative z-10 w-14 h-14 rounded-xl gold-gradient-bg flex items-center justify-center mb-5">
+              <div className="w-14 h-14 rounded-xl gold-gradient-bg flex items-center justify-center shrink-0">
                 <problem.icon className="w-6 h-6 text-primary-foreground" />
               </div>
-              <h3 className="text-lg font-display font-semibold mb-3 text-foreground">{problem.title}</h3>
-              <p className="text-sm text-muted-foreground font-body leading-relaxed">{problem.description}</p>
+              <div>
+                <h3 className="text-lg font-display font-semibold mb-2 text-foreground">{problem.title}</h3>
+                <p className="text-sm text-muted-foreground font-body leading-relaxed">{problem.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
 
+        {/* Before / After */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="text-center mt-14"
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-14"
         >
-          <Button
-            size="lg"
-            className="gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-5 rounded-xl btn-float"
+          <div className="p-6 rounded-2xl bg-destructive/10 border border-destructive/20 text-center">
+            <p className="text-sm font-body font-semibold text-destructive mb-2">❌ ANTES</p>
+            <p className="text-foreground font-body text-sm">Leads perdidos, WhatsApp caótico, pacientes que no vuelven</p>
+          </div>
+          <div className="p-6 rounded-2xl bg-primary/10 border border-primary/20 text-center">
+            <p className="text-sm font-body font-semibold text-primary mb-2">✅ DESPUÉS</p>
+            <p className="text-foreground font-body text-sm">Respuesta instantánea, citas automáticas, equipo relajado</p>
+          </div>
+        </motion.div>
+
+        <div className="text-center">
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
           >
             Resolver estos problemas
-          </Button>
-        </motion.div>
+          </a>
+        </div>
       </div>
     </section>
   );

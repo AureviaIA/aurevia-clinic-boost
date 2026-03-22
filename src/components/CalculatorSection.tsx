@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Calculator, TrendingUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
+const WA_LINK = "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
 
 const CalculatorSection = () => {
   const [leadsPerMonth, setLeadsPerMonth] = useState(100);
@@ -117,12 +118,14 @@ const CalculatorSection = () => {
         </motion.div>
 
         <div className="text-center mt-12">
-          <Button
-            size="lg"
-            className="gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-5 rounded-xl btn-float"
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
           >
             Quiero estos resultados
-          </Button>
+          </a>
         </div>
       </div>
     </section>

@@ -1,25 +1,26 @@
 import { motion } from "framer-motion";
-import { MessageSquare, Settings, Rocket } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CalendarClock, Bot, TrendingUp } from "lucide-react";
+
+const WA_LINK = "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
 
 const steps = [
   {
-    icon: MessageSquare,
+    icon: CalendarClock,
     step: "01",
-    title: "Consultoría Gratuita",
-    description: "Entendemos tus necesidades y objetivos específicos.",
+    title: "Consultoría gratuita 30–45 min",
+    description: "Analizamos tu clínica, tus necesidades y diseñamos un plan personalizado.",
   },
   {
-    icon: Settings,
+    icon: Bot,
     step: "02",
-    title: "Implementación",
-    description: "Configuramos la solución de IA seleccionada para tu clínica.",
+    title: "Implementación del sistema IA",
+    description: "Configuramos tu agente de WhatsApp y lo integramos con tu flujo de trabajo.",
   },
   {
-    icon: Rocket,
+    icon: TrendingUp,
     step: "03",
-    title: "Resultados",
-    description: "Obtén resultados positivos en un plazo de 4 a 6 semanas.",
+    title: "Resultados en 2–4 semanas",
+    description: "Más leads convertidos, menos no-shows y un equipo más productivo.",
   },
 ];
 
@@ -40,7 +41,7 @@ const ProcessSection = () => {
           </h2>
         </motion.div>
 
-        <div className="relative flex flex-col lg:flex-row items-stretch justify-center gap-8 max-w-4xl mx-auto">
+        <div className="relative flex flex-col lg:flex-row items-stretch justify-center gap-8 max-w-5xl mx-auto">
           {/* Connector line */}
           <div className="hidden lg:block absolute top-1/2 left-[16%] right-[16%] h-px bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 -translate-y-1/2" />
 
@@ -70,12 +71,14 @@ const ProcessSection = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="text-center mt-14"
         >
-          <Button
-            size="lg"
-            className="gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-5 rounded-xl btn-float"
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
           >
-            Agenda consultoría
-          </Button>
+            Agendar consultoría gratuita
+          </a>
         </motion.div>
       </div>
     </section>

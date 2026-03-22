@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Star, Quote, MessageCircle } from "lucide-react";
+
+const WA_LINK = "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
 
 const testimonials = [
   {
-    quote: "Gracias a Aurevia, aumenté mis conversiones en un 40% y ahora ahorro 15 horas a la semana.",
+    quote: "Gracias a Aurevia, ahora respondemos a todos los pacientes y no perdemos leads. Más tiempo libre y más ingresos.",
     name: "Dr. López",
     clinic: "Clínica Estética Renovar",
   },
   {
-    quote: "La automatización cambió nuestra dinámica. ¡Ya no perdemos ningún lead!",
+    quote: "Automatizar WhatsApp cambió nuestra dinámica. ¡Ya no perdemos pacientes!",
     name: "Sra. Martínez",
     clinic: "Estética Avanzada",
   },
@@ -51,21 +52,28 @@ const TestimonialsSection = () => {
               <p className="text-foreground font-body leading-relaxed mb-6 italic">
                 "{t.quote}"
               </p>
-              <div>
-                <p className="font-display font-semibold text-foreground">{t.name}</p>
-                <p className="text-sm text-muted-foreground font-body">{t.clinic}</p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full gold-gradient-bg flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-primary-foreground" />
+                </div>
+                <div>
+                  <p className="font-display font-semibold text-foreground">{t.name}</p>
+                  <p className="text-sm text-muted-foreground font-body">{t.clinic}</p>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
         <div className="text-center">
-          <Button
-            size="lg"
-            className="gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-5 rounded-xl btn-float"
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
           >
             Quiero resultados así
-          </Button>
+          </a>
         </div>
       </div>
     </section>
