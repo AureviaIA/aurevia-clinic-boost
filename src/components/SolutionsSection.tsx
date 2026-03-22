@@ -1,38 +1,15 @@
 import { motion } from "framer-motion";
-import { Bot, CalendarCheck, FileText, Workflow, TrendingUp, Clock, UserCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Zap, Filter, CalendarCheck, ShieldCheck, Users, MessageCircle } from "lucide-react";
+
+const WA_LINK = "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
 
 const solutions = [
-  {
-    icon: Workflow,
-    title: "Automatización de seguimiento de leads",
-    description: "Asegúrate de que cada lead sea atendido a tiempo.",
-    benefit: "Nunca perderás una oportunidad de conversión.",
-  },
-  {
-    icon: Bot,
-    title: "Agente de Texto IA 24/7",
-    description: "Respuesta instantánea a consultas de pacientes.",
-    benefit: "Mantén el interés y la conexión con pacientes potenciales.",
-  },
-  {
-    icon: CalendarCheck,
-    title: "Sistema de agendamiento inteligente",
-    description: "Reduce las inasistencias y optimiza tus agendas.",
-    benefit: "Minimiza el riesgo de no presentarse a citas.",
-  },
-  {
-    icon: FileText,
-    title: "Generación automática de propuestas",
-    description: "Crea propuestas personalizadas sin esfuerzo.",
-    benefit: "Ahorra tiempo y personaliza la atención al paciente.",
-  },
-];
-
-const stats = [
-  { icon: TrendingUp, value: "80%", label: "Aumento en conversión de leads" },
-  { icon: Clock, value: "15h", label: "Ahorro semanal en trabajo manual" },
-  { icon: UserCheck, value: "40%", label: "Reducción de no-shows" },
+  { icon: Zap, title: "Respuesta instantánea 24/7", description: "Tu agente IA responde al segundo, incluso a las 3 AM." },
+  { icon: Filter, title: "Filtrado y calificación de leads", description: "Identifica automáticamente a los pacientes más valiosos." },
+  { icon: CalendarCheck, title: "Agenda citas con confirmación", description: "Confirma citas por email y teléfono sin intervención." },
+  { icon: ShieldCheck, title: "Reduce cancelaciones y no-shows", description: "Recordatorios automáticos que bajan los no-shows un 40%." },
+  { icon: Users, title: "Menos trabajo manual", description: "Libera a tu equipo de tareas repetitivas para que atiendan mejor." },
+  { icon: MessageCircle, title: "Conversaciones naturales", description: "IA que habla como un humano, con empatía y profesionalismo." },
 ];
 
 const SolutionsSection = () => {
@@ -48,61 +25,41 @@ const SolutionsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-            Soluciones de <span className="gold-gradient-text">IA a tu medida</span>
+            Soluciones que <span className="gold-gradient-text">transforman tu clínica</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body">
-            Tecnología inteligente diseñada específicamente para el crecimiento de tu clínica.
+            Tecnología inteligente diseñada para que tu clínica crezca sin complicaciones.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-14">
           {solutions.map((sol, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="p-6 rounded-2xl gold-border-glow bg-card group"
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="p-6 rounded-2xl gold-border-glow bg-card group text-center"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <sol.icon className="w-6 h-6 text-primary" />
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 mx-auto group-hover:bg-primary/20 transition-colors">
+                <sol.icon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-lg font-display font-semibold mb-2 text-foreground">{sol.title}</h3>
-              <p className="text-sm text-muted-foreground font-body mb-3">{sol.description}</p>
-              <p className="text-sm text-primary font-body font-medium">→ {sol.benefit}</p>
+              <p className="text-sm text-muted-foreground font-body">{sol.description}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-wrap justify-center gap-8 mb-14"
-        >
-          {stats.map((stat, i) => (
-            <div key={i} className="flex items-center gap-4 p-5 rounded-2xl gold-border-glow bg-card min-w-[240px]">
-              <div className="w-12 h-12 rounded-lg gold-gradient-bg flex items-center justify-center">
-                <stat.icon className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <div>
-                <p className="text-2xl font-display font-bold gold-gradient-text">{stat.value}</p>
-                <p className="text-xs text-muted-foreground font-body">{stat.label}</p>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-
         <div className="text-center">
-          <Button
-            size="lg"
-            className="gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-5 rounded-xl btn-float"
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
           >
             Quiero estas soluciones
-          </Button>
+          </a>
         </div>
       </div>
     </section>

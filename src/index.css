@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,49 +6,49 @@
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
-    --foreground: 45 20% 90%;
+    --background: 0 0% 11%;
+    --foreground: 0 0% 95%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 45 20% 90%;
+    --card: 0 0% 14%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 45 20% 90%;
+    --popover: 0 0% 14%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 42 78% 55%;
-    --primary-foreground: 220 20% 6%;
+    --primary: 51 100% 50%;
+    --primary-foreground: 0 0% 8%;
 
-    --secondary: 220 15% 14%;
-    --secondary-foreground: 45 20% 90%;
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 15% 14%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 42 60% 40%;
-    --accent-foreground: 45 20% 95%;
+    --accent: 51 80% 40%;
+    --accent-foreground: 0 0% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 42 30% 20%;
-    --input: 220 15% 18%;
-    --ring: 42 78% 55%;
+    --border: 51 20% 22%;
+    --input: 0 0% 18%;
+    --ring: 51 100% 50%;
 
     --radius: 0.75rem;
 
-    --gold-glow: 42 78% 55%;
-    --gold-light: 42 60% 70%;
-    --gold-dark: 42 50% 30%;
-    --surface-elevated: 220 18% 12%;
+    --gold-glow: 51 100% 50%;
+    --gold-light: 51 80% 65%;
+    --gold-dark: 51 60% 30%;
+    --surface-elevated: 0 0% 15%;
 
-    --sidebar-background: 220 20% 8%;
-    --sidebar-foreground: 45 20% 90%;
-    --sidebar-primary: 42 78% 55%;
-    --sidebar-primary-foreground: 220 20% 6%;
-    --sidebar-accent: 220 15% 14%;
-    --sidebar-accent-foreground: 45 20% 90%;
-    --sidebar-border: 42 30% 20%;
-    --sidebar-ring: 42 78% 55%;
+    --sidebar-background: 0 0% 9%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 51 100% 50%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 51 20% 22%;
+    --sidebar-ring: 51 100% 50%;
   }
 }
 
@@ -69,22 +69,22 @@
 @layer components {
   .gold-gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(42 78% 55%), hsl(42 60% 70%), hsl(42 78% 55%));
+    background-image: linear-gradient(135deg, hsl(51 100% 50%), hsl(51 80% 65%), hsl(51 100% 50%));
   }
 
   .gold-gradient-bg {
-    background: linear-gradient(135deg, hsl(42 78% 55%), hsl(42 50% 40%));
+    background: linear-gradient(135deg, hsl(51 100% 50%), hsl(51 60% 38%));
   }
 
   .gold-border-glow {
-    border: 1px solid hsl(42 30% 25%);
-    box-shadow: 0 0 20px hsl(42 78% 55% / 0.08);
+    border: 1px solid hsl(51 20% 25%);
+    box-shadow: 0 0 20px hsl(51 100% 50% / 0.08);
     transition: box-shadow 0.4s ease, border-color 0.4s ease;
   }
 
   .gold-border-glow:hover {
-    border-color: hsl(42 78% 55% / 0.5);
-    box-shadow: 0 0 30px hsl(42 78% 55% / 0.15), 0 0 60px hsl(42 78% 55% / 0.05);
+    border-color: hsl(51 100% 50% / 0.5);
+    box-shadow: 0 0 30px hsl(51 100% 50% / 0.15), 0 0 60px hsl(51 100% 50% / 0.05);
   }
 
   .section-glow {
@@ -92,7 +92,7 @@
   }
 
   .section-glow:hover {
-    background: radial-gradient(ellipse at center, hsl(42 78% 55% / 0.03) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, hsl(51 100% 50% / 0.03) 0%, transparent 70%);
   }
 
   .btn-float {
@@ -101,10 +101,22 @@
 
   .btn-float:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px hsl(42 78% 55% / 0.3);
+    box-shadow: 0 8px 30px hsl(51 100% 50% / 0.3);
   }
 
   .btn-float:active {
     transform: translateY(-1px);
+  }
+
+  .chat-bubble {
+    @apply rounded-2xl px-4 py-3 text-sm font-body max-w-[280px];
+  }
+
+  .chat-bubble-patient {
+    @apply bg-muted text-foreground rounded-bl-sm;
+  }
+
+  .chat-bubble-ia {
+    @apply gold-gradient-bg text-primary-foreground rounded-br-sm;
   }
 }
