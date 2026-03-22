@@ -10,9 +10,7 @@ import FAQSection from "@/components/FAQSection";
 import BonusSection from "@/components/BonusSection";
 import ContactFormSection from "@/components/ContactFormSection";
 import BenefitsSection from "@/components/BenefitsSection";
-import { MessageCircle } from "lucide-react";
-
-const WA_LINK = "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
+import FloatingChat from "@/components/FloatingChat";
 
 const Index = () => {
   return (
@@ -29,17 +27,7 @@ const Index = () => {
       <BonusSection />
       <ContactFormSection />
       <BenefitsSection />
-
-      {/* Floating WhatsApp button */}
-      <a
-        href={WA_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full gold-gradient-bg flex items-center justify-center btn-float animate-glow-pulse shadow-lg"
-        aria-label="Conversación directa por WhatsApp"
-      >
-        <MessageCircle className="w-6 h-6 text-primary-foreground" />
-      </a>
+      <FloatingChat />
     </div>
   );
 };
