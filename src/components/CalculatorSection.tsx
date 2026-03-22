@@ -118,12 +118,14 @@ const CalculatorSection = () => {
         </motion.div>
 
         <div className="text-center mt-12">
-          <Button
-            size="lg"
-            className="gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-5 rounded-xl btn-float"
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
           >
             Quiero estos resultados
-          </Button>
+          </a>
         </div>
       </div>
     </section>
