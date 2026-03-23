@@ -57,8 +57,8 @@ const TestimonialsSection = () => {
                 "{t.quote}"
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full gold-gradient-bg flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-primary-foreground" />
+                <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/30">
+                  <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <p className="font-display font-semibold text-foreground">{t.name}</p>
