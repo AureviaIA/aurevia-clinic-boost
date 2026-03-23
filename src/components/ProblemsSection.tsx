@@ -54,36 +54,30 @@ const ProblemsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="flex gap-5 p-6 rounded-2xl gold-border-glow bg-card"
+              className="rounded-2xl gold-border-glow bg-card overflow-hidden"
             >
-              <div className="w-14 h-14 rounded-xl gold-gradient-bg flex items-center justify-center shrink-0">
-                <problem.icon className="w-6 h-6 text-primary-foreground" />
+              <div className="flex gap-5 p-6">
+                <div className="w-14 h-14 rounded-xl gold-gradient-bg flex items-center justify-center shrink-0">
+                  <problem.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-display font-semibold mb-2 text-foreground">{problem.title}</h3>
+                  <p className="text-sm text-muted-foreground font-body leading-relaxed">{problem.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-display font-semibold mb-2 text-foreground">{problem.title}</h3>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed">{problem.description}</p>
+              <div className="grid grid-cols-2 border-t border-border/30">
+                <div className="p-3 bg-destructive/10 text-center border-r border-border/30">
+                  <p className="text-xs font-body font-semibold text-destructive mb-1">❌ ANTES</p>
+                  <p className="text-foreground font-body text-xs leading-snug">{problem.before}</p>
+                </div>
+                <div className="p-3 bg-primary/10 text-center">
+                  <p className="text-xs font-body font-semibold text-primary mb-1">✅ DESPUÉS</p>
+                  <p className="text-foreground font-body text-xs leading-snug">{problem.after}</p>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Before / After */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-14"
-        >
-          <div className="p-6 rounded-2xl bg-destructive/10 border border-destructive/20 text-center">
-            <p className="text-sm font-body font-semibold text-destructive mb-2">❌ ANTES</p>
-            <p className="text-foreground font-body text-sm">Leads perdidos, WhatsApp caótico, pacientes que no vuelven</p>
-          </div>
-          <div className="p-6 rounded-2xl bg-primary/10 border border-primary/20 text-center">
-            <p className="text-sm font-body font-semibold text-primary mb-2">✅ DESPUÉS</p>
-            <p className="text-foreground font-body text-sm">Respuesta instantánea, citas automáticas, equipo relajado</p>
-          </div>
-        </motion.div>
 
         <div className="text-center">
           <a
