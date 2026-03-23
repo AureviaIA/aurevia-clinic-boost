@@ -10,11 +10,13 @@ const testimonials = [
     quote: "Gracias a Aurevia, ahora respondemos a todos los pacientes y no perdemos leads. Más tiempo libre y más ingresos.",
     name: "Dr. López",
     clinic: "Clínica Estética Renovar",
+    image: drLopezImg,
   },
   {
     quote: "Automatizar WhatsApp cambió nuestra dinámica. ¡Ya no perdemos pacientes!",
     name: "Sra. Martínez",
     clinic: "Estética Avanzada",
+    image: sraMartinezImg,
   },
 ];
 
