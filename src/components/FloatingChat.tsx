@@ -360,7 +360,7 @@ function processMessage(
 const FloatingChat = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, sender: "bot", text: "Hola! 😊 Hablas con el equipo de Aurevia. En qué te puedo ayudar?" },
+    { id: 1, sender: "bot", text: "Hola! 😊 Soy tu asistente de Aurevia" },
   ]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
