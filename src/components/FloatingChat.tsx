@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send } from "lucide-react";
 
-const WA_LINK = "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
+const WA_LINK =
+  "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
 
 interface Message {
   id: number;
@@ -10,62 +11,360 @@ interface Message {
   text: string;
 }
 
-const initialMessages: Message[] = [
-  {
-    id: 1,
-    sender: "bot",
-    text: "¡Hola! 👋 Soy el asistente de Aurevia Agency. ¿En qué puedo ayudarte hoy?",
-  },
+type Stage =
+  | "greeting"
+  | "qualification"
+  | "pain_explore"
+  | "pain_deep"
+  | "positioning"
+  | "transition_schedule"
+  | "ask_preference"
+  | "offer_slots"
+  | "ask_email"
+  | "confirm_email"
+  | "ask_phone"
+  | "confirm_phone"
+  | "booked"
+  | "objection_1"
+  | "objection_2"
+  | "objection_3"
+  | "objection_4";
+
+interface ConvoState {
+  stage: Stage;
+  name: string;
+  businessInfo: string;
+  painPoint: string;
+  email: string;
+  phone: string;
+  chosenSlot: string;
+  objectionCount: number;
+}
+
+const initialState: ConvoState = {
+  stage: "greeting",
+  name: "",
+  businessInfo: "",
+  painPoint: "",
+  email: "",
+  phone: "",
+  chosenSlot: "",
+  objectionCount: 0,
+};
+
+const NEGATIVE_KW = [
+  "no", "no me interesa", "después", "despues", "luego", "ahora no",
+  "no ahora", "no puedo", "no quiero", "no gracias", "paso", "ocupado",
+  "ocupada", "pensarlo", "piénsalo", "lo pienso", "déjame pensar",
+  "dejame pensar", "mándame info", "mandame info", "envíame", "enviame",
 ];
 
-const botResponses: { keywords: string[]; response: string }[] = [
-  {
-    keywords: ["precio", "costo", "cuánto", "cuanto", "tarifa", "plan"],
-    response:
-      "Ofrecemos planes adaptados al tamaño de tu clínica. ¿Te gustaría agendar una consultoría gratuita de 30-45 min para darte una propuesta personalizada? 😊",
-  },
-  {
-    keywords: ["demo", "demostración", "probar", "prueba", "ver"],
-    response:
-      "¡Claro! Podemos mostrarte cómo funciona en una demo en vivo de 30-45 min. ¿Quieres que la agendemos? También puedes probarlo directamente en WhatsApp 👇",
-  },
-  {
-    keywords: ["whatsapp", "automatizar", "automatización", "ia", "bot"],
-    response:
-      "Nuestro agente de IA responde automáticamente a tus pacientes por WhatsApp 24/7, agenda citas y reduce no-shows hasta un 40%. ¿Quieres ver cómo funciona?",
-  },
-  {
-    keywords: ["cita", "agendar", "agenda", "consulta", "consultoría"],
-    response:
-      "¡Perfecto! Puedes agendar tu consultoría gratuita de 30-45 min donde analizaremos tu clínica y diseñaremos un plan personalizado. ¿Te gustaría agendar ahora por WhatsApp?",
-  },
-  {
-    keywords: ["hola", "buenas", "hey", "buenos"],
-    response:
-      "¡Hola! 😊 Bienvenido a Aurevia Agency. Ayudamos a clínicas a automatizar WhatsApp con IA para captar más pacientes. ¿Qué te gustaría saber?",
-  },
-  {
-    keywords: ["tiempo", "implementación", "cuánto tarda", "plazo"],
-    response:
-      "La implementación completa se realiza en 2-4 semanas. Nos encargamos de todo el proceso técnico para que no tengas que preocuparte. ¿Agendamos la consultoría?",
-  },
+const POSITIVE_KW = [
+  "sí", "si", "claro", "dale", "vale", "ok", "bueno", "me interesa",
+  "quiero", "agendar", "agenda", "cita", "demo", "vamos", "genial",
+  "perfecto", "correcto", "bien",
 ];
 
-function getBotResponse(userText: string): string {
-  const lower = userText.toLowerCase();
-  for (const item of botResponses) {
-    if (item.keywords.some((kw) => lower.includes(kw))) {
-      return item.response;
+const isNegative = (t: string) => {
+  const l = t.toLowerCase().trim();
+  return NEGATIVE_KW.some((kw) => l.includes(kw));
+};
+const isPositive = (t: string) => {
+  const l = t.toLowerCase().trim();
+  return POSITIVE_KW.some((kw) => l.includes(kw));
+};
+const looksLikeEmail = (t: string) => /\S+@\S+\.\S+/.test(t.trim());
+const looksLikePhone = (t: string) => /[\d\s\-+()]{7,}/.test(t.trim());
+
+function getSlots(): string[] {
+  const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+  const hours = ["10:00", "12:00", "16:00", "17:00", "18:00"];
+  const now = new Date();
+  const slots: string[] = [];
+  for (let i = 1; i <= 7 && slots.length < 3; i++) {
+    const d = new Date(now);
+    d.setDate(now.getDate() + i);
+    const dayName = days[d.getDay() - 1];
+    if (dayName) {
+      const h = hours[Math.floor(Math.random() * hours.length)];
+      slots.push(`${dayName} a las ${h}`);
     }
   }
-  return "¡Gracias por tu mensaje! Para darte la mejor atención, te recomiendo hablar directamente con nuestro equipo por WhatsApp. ¿Quieres que te conecte? 😊";
+  return slots.length >= 3 ? slots.slice(0, 3) : ["Martes a las 10:00", "Miércoles a las 16:00", "Jueves a las 12:00"];
+}
+
+function processMessage(
+  userText: string,
+  state: ConvoState
+): { responses: string[]; newState: ConvoState } {
+  const s = { ...state };
+  const t = userText.trim();
+  const lower = t.toLowerCase();
+
+  // Helper: attempt objection handling
+  const handleObjection = (): string[] => {
+    s.objectionCount += 1;
+    if (s.objectionCount === 1) {
+      s.stage = "objection_1";
+      return [
+        "Entiendo 😊",
+        "Solo una pregunta rápida... que es lo que más te frustra de la captación de leads actualmente?",
+      ];
+    }
+    if (s.objectionCount === 2) {
+      s.stage = "objection_2";
+      return [
+        "Claro, lo respeto 👍",
+        "Mira, muchos de nuestros clientes nos dijeron lo mismo al inicio.",
+        "Actualmente como manejan la atención a leads que les escriben?",
+      ];
+    }
+    if (s.objectionCount === 3) {
+      s.stage = "objection_3";
+      return [
+        "Te entiendo perfectamente.",
+        "Puedo preguntarte algo? Si pudieras mejorar UNA cosa del seguimiento a tus pacientes hoy, cual sería?",
+      ];
+    }
+    // 4th attempt
+    s.stage = "objection_4";
+    return [
+      "Ok, sin compromiso... solo por curiosidad:",
+      "Cual es tu meta de crecimiento para los próximos 3-6 meses? 📊",
+    ];
+  };
+
+  // After objection responses, if they engage positively -> back to positioning
+  if (
+    ["objection_1", "objection_2", "objection_3", "objection_4"].includes(s.stage)
+  ) {
+    if (isNegative(lower) && s.objectionCount < 4) {
+      return { responses: handleObjection(), newState: s };
+    }
+    if (s.objectionCount >= 4 && isNegative(lower)) {
+      s.stage = "booked";
+      return {
+        responses: [
+          "Sin problema! Cuando quieras retomar el tema, aquí estamos 😊",
+          "También puedes escribirnos directo por WhatsApp 👇",
+        ],
+        newState: s,
+      };
+    }
+    // They engaged – capture pain and move to positioning
+    if (t.length > 3) {
+      s.painPoint = t;
+      s.stage = "positioning";
+      return {
+        responses: [
+          `Uff, sí... "${t.length > 60 ? t.slice(0, 60) + "..." : t}" es súper común 😅`,
+          "Mira, lo que hacemos es un sistema integral de automatización con IA que incluye una landing profesional y un agente IA que gestiona consultas al instante.",
+          "Así mejoras tu captación y no pierdes pacientes valiosos 📊",
+          "Lo mejor sería que hablemos más a fondo sobre tu situación. Tenemos consultorías donde analizamos tu negocio y te armamos una estrategia personalizada. Sin costo 😊",
+          "Son como 30-45 min. Te gustaría agendar una llamada?",
+        ],
+        newState: s,
+      };
+    }
+  }
+
+  switch (s.stage) {
+    case "greeting": {
+      s.stage = "qualification";
+      // Try to grab name
+      const words = t.split(/\s+/);
+      if (words.length <= 4) s.name = words[words.length - 1];
+      return {
+        responses: [
+          `${s.name ? `Hola ${s.name}! 😊` : "Hola! 😊"} Hablas con el equipo de Aurevia.`,
+          "Somos una agencia de automatización con IA que ayuda a empresarios de medicina estética a mejorar su captación de pacientes.",
+          "Me cuentas un poco sobre tu negocio? A qué se dedican?",
+        ],
+        newState: s,
+      };
+    }
+
+    case "qualification": {
+      s.businessInfo = t;
+      s.stage = "pain_explore";
+      const mention = t.length > 40 ? t.slice(0, 40) + "..." : t;
+      return {
+        responses: [
+          `Ah interesante lo de "${mention}" 👍`,
+          "Actualmente, como están obteniendo nuevos pacientes? Usan marketing digital, redes sociales, o como les llegan?",
+        ],
+        newState: s,
+      };
+    }
+
+    case "pain_explore": {
+      s.stage = "pain_deep";
+      return {
+        responses: [
+          "Ya veo... y como te está funcionando eso? Están viendo los resultados que esperaban?",
+        ],
+        newState: s,
+      };
+    }
+
+    case "pain_deep": {
+      s.painPoint = t;
+      s.stage = "positioning";
+      const hasFrustration =
+        lower.includes("no") ||
+        lower.includes("mal") ||
+        lower.includes("poco") ||
+        lower.includes("falta") ||
+        lower.includes("difícil") ||
+        lower.includes("dificil") ||
+        lower.includes("complicado");
+      const empathy = hasFrustration
+        ? "Uff, te entiendo perfectamente 😅 Eso es súper común."
+        : "Sí, muchos nos dicen lo mismo.";
+      return {
+        responses: [
+          empathy,
+          "Mira, lo que hacemos es un sistema integral de automatización con IA que incluye una landing profesional y un agente IA que gestiona consultas al instante.",
+          "Así mejoras tu captación y no pierdes pacientes valiosos 📊",
+          "Lo mejor sería que hablemos más a fondo sobre tu situación. Tenemos consultorías donde analizamos tu negocio y te armamos una estrategia personalizada. Sin costo 😊",
+          "Son como 30-45 min. Te gustaría agendar una llamada?",
+        ],
+        newState: s,
+      };
+    }
+
+    case "positioning":
+    case "transition_schedule": {
+      if (isNegative(lower)) {
+        return { responses: handleObjection(), newState: s };
+      }
+      s.stage = "ask_preference";
+      return {
+        responses: [
+          "Genial! 🙌",
+          "En qué ciudad/país estás? (para ajustar el horario)",
+        ],
+        newState: s,
+      };
+    }
+
+    case "ask_preference": {
+      const slots = getSlots();
+      s.stage = "offer_slots";
+      return {
+        responses: [
+          "Dale! Tengo estos horarios disponibles:",
+          `1️⃣ ${slots[0]}`,
+          `2️⃣ ${slots[1]}`,
+          `3️⃣ ${slots[2]}`,
+          "Cual te viene mejor?",
+        ],
+        newState: s,
+      };
+    }
+
+    case "offer_slots": {
+      const pick =
+        lower.includes("1") || lower.includes("primer")
+          ? 1
+          : lower.includes("2") || lower.includes("segund")
+            ? 2
+            : 3;
+      const slots = getSlots();
+      s.chosenSlot = slots[pick - 1] || slots[0];
+      s.stage = "ask_email";
+      return {
+        responses: [
+          `Dale! ✅ Te agendo para ${s.chosenSlot}`,
+          "Para enviarte la confirmación, cual es tu email?",
+        ],
+        newState: s,
+      };
+    }
+
+    case "ask_email": {
+      if (looksLikeEmail(t)) {
+        s.email = t.trim();
+        s.stage = "confirm_email";
+        return {
+          responses: [
+            "Me lo deletreas para asegurarme de escribirlo bien? 😊",
+          ],
+          newState: s,
+        };
+      }
+      return {
+        responses: ["Podrías pasarme tu email? Así te envío la confirmación 📩"],
+        newState: s,
+      };
+    }
+
+    case "confirm_email": {
+      // Accept the spelling / re-entry
+      if (looksLikeEmail(t)) s.email = t.trim();
+      s.stage = "ask_phone";
+      return {
+        responses: [
+          `Ok, entonces es ${s.email}. Correcto? 👍`,
+          "Y el teléfono de contacto, cual sería? (por si necesitamos confirmar algo)",
+        ],
+        newState: s,
+      };
+    }
+
+    case "ask_phone": {
+      if (looksLikePhone(t)) {
+        s.phone = t.trim();
+        s.stage = "confirm_phone";
+        return {
+          responses: [`Genial, entonces ${s.phone}. Así está bien?`],
+          newState: s,
+        };
+      }
+      return {
+        responses: ["Podrías darme un número de teléfono de contacto? 📱"],
+        newState: s,
+      };
+    }
+
+    case "confirm_phone": {
+      s.stage = "booked";
+      return {
+        responses: [
+          `Listo! ✅ Ya estás agendado/a para ${s.chosenSlot} tu hora.`,
+          `Te va a llegar un email de confirmación a ${s.email} con el link de la videollamada.`,
+          "Nos vemos entonces! 😊🚀",
+        ],
+        newState: s,
+      };
+    }
+
+    case "booked": {
+      return {
+        responses: [
+          "Ya tienes tu cita agendada! Si necesitas algo más, aquí estamos 😊",
+          "También puedes escribirnos directo por WhatsApp 👇",
+        ],
+        newState: s,
+      };
+    }
+
+    default:
+      return {
+        responses: ["Me cuentas un poco más? 😊"],
+        newState: s,
+      };
+  }
 }
 
 const FloatingChat = () => {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>(initialMessages);
+  const [messages, setMessages] = useState<Message[]>([
+    { id: 1, sender: "bot", text: "Hola! 😊 Hablas con el equipo de Aurevia. En qué te puedo ayudar?" },
+  ]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
+  const [convoState, setConvoState] = useState<ConvoState>({ ...initialState });
   const scrollRef = useRef<HTMLDivElement>(null);
   const idCounter = useRef(2);
 
@@ -84,12 +383,19 @@ const FloatingChat = () => {
     setInput("");
     setTyping(true);
 
-    setTimeout(() => {
-      const botText = getBotResponse(text);
-      const botMsg: Message = { id: idCounter.current++, sender: "bot", text: botText };
-      setMessages((prev) => [...prev, botMsg]);
-      setTyping(false);
-    }, 1000 + Math.random() * 800);
+    const { responses, newState } = processMessage(text, convoState);
+    setConvoState(newState);
+
+    // Drip messages with delays
+    let delay = 600;
+    responses.forEach((resp, i) => {
+      delay += 400 + resp.length * 12; // simulate typing speed
+      setTimeout(() => {
+        const botMsg: Message = { id: idCounter.current++, sender: "bot", text: resp };
+        setMessages((prev) => [...prev, botMsg]);
+        if (i === responses.length - 1) setTyping(false);
+      }, delay);
+    });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -101,7 +407,6 @@ const FloatingChat = () => {
 
   return (
     <>
-      {/* Chat window */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -163,7 +468,7 @@ const FloatingChat = () => {
               rel="noopener noreferrer"
               className="mx-4 mb-2 text-center text-xs font-body text-primary hover:underline"
             >
-              💬 ¿Prefieres hablar por WhatsApp? Haz clic aquí
+              💬 Prefieres hablar por WhatsApp? Haz clic aquí
             </a>
 
             {/* Input */}
