@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Star, Quote, MessageCircle } from "lucide-react";
+import { Star, Quote } from "lucide-react";
+import drLopezImg from "@/assets/testimonial-dr-lopez.jpg";
+import sraMartinezImg from "@/assets/testimonial-sra-martinez.jpg";
 
 const WA_LINK = "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
 
@@ -8,11 +10,13 @@ const testimonials = [
     quote: "Gracias a Aurevia, ahora respondemos a todos los pacientes y no perdemos leads. Más tiempo libre y más ingresos.",
     name: "Dr. López",
     clinic: "Clínica Estética Renovar",
+    image: drLopezImg,
   },
   {
     quote: "Automatizar WhatsApp cambió nuestra dinámica. ¡Ya no perdemos pacientes!",
     name: "Sra. Martínez",
     clinic: "Estética Avanzada",
+    image: sraMartinezImg,
   },
 ];
 
@@ -53,8 +57,8 @@ const TestimonialsSection = () => {
                 "{t.quote}"
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full gold-gradient-bg flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-primary-foreground" />
+                <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/30">
+                  <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <p className="font-display font-semibold text-foreground">{t.name}</p>
