@@ -78,18 +78,6 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
 
-            {/* Floating chat preview */}
-            <motion.div
-              className="absolute -bottom-4 -left-4 lg:-left-8 bg-card rounded-2xl p-4 gold-border-glow shadow-2xl max-w-[260px]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-            >
-              <div className="space-y-2">
-                <div className="chat-bubble chat-bubble-patient">Hola, quiero una cita 🙋‍♀️</div>
-                <div className="chat-bubble chat-bubble-ia">¡Claro! 😊 ¿Martes o jueves?</div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

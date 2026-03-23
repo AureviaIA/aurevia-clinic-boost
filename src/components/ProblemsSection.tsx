@@ -8,21 +8,29 @@ const problems = [
     icon: Clock,
     title: "Pacientes sin respuesta a tiempo",
     description: "Más del 40% de tus leads se pierden porque no reciben respuesta rápida.",
+    before: "Leads esperando horas sin respuesta",
+    after: "Respuesta instantánea 24/7 con IA",
   },
   {
     icon: MessageSquareWarning,
     title: "WhatsApp saturado → citas perdidas",
     description: "Los mensajes se acumulan y las oportunidades se van con la competencia.",
+    before: "Mensajes sin leer, oportunidades perdidas",
+    after: "Cada mensaje atendido al instante",
   },
   {
     icon: Monitor,
     title: "Recepción desbordada",
     description: "Tu equipo no da abasto respondiendo consultas, gestionando agendas y atendiendo pacientes.",
+    before: "Equipo estresado y tareas acumuladas",
+    after: "Equipo relajado, IA gestiona lo repetitivo",
   },
   {
     icon: CalendarX,
     title: "Pacientes que no se presentan",
     description: "El 30% de tus pacientes agendados no se presentan, perdiendo ingresos y horas.",
+    before: "30% de ausencias, ingresos perdidos",
+    after: "Recordatorios automáticos, -80% ausencias",
   },
 ];
 
