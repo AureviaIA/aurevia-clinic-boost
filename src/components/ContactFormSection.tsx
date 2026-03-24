@@ -63,6 +63,8 @@ const ContactFormSection = () => {
         </motion.div>
 
         <motion.form
+          id="contact-form"
+          data-endpoint="/api/lead"
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,8 +74,10 @@ const ContactFormSection = () => {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label className="text-sm font-body text-muted-foreground mb-2 block">Nombre *</label>
+              <label htmlFor="name" className="text-sm font-body text-muted-foreground mb-2 block">Nombre *</label>
               <Input
+                id="name"
+                name="name"
                 required
                 placeholder="Tu nombre"
                 value={form.nombre}
@@ -82,8 +86,10 @@ const ContactFormSection = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-body text-muted-foreground mb-2 block">Email *</label>
+              <label htmlFor="email" className="text-sm font-body text-muted-foreground mb-2 block">Email *</label>
               <Input
+                id="email"
+                name="email"
                 required
                 type="email"
                 placeholder="tu@email.com"
@@ -95,8 +101,10 @@ const ContactFormSection = () => {
           </div>
 
           <div>
-            <label className="text-sm font-body text-muted-foreground mb-2 block">Teléfono (opcional)</label>
+            <label htmlFor="phone" className="text-sm font-body text-muted-foreground mb-2 block">Teléfono (opcional)</label>
             <Input
+              id="phone"
+              name="phone"
               type="tel"
               placeholder="+34 600 000 000"
               value={form.telefono}
@@ -106,8 +114,10 @@ const ContactFormSection = () => {
           </div>
 
           <div>
-            <label className="text-sm font-body text-muted-foreground mb-2 block">Mensaje *</label>
+            <label htmlFor="message" className="text-sm font-body text-muted-foreground mb-2 block">Mensaje *</label>
             <Textarea
+              id="message"
+              name="message"
               required
               placeholder="Cuéntanos sobre tu clínica y lo que necesitas..."
               value={form.mensaje}
