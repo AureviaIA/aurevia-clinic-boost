@@ -3,20 +3,44 @@ import { useState } from "react";
 import { Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/TU_ID"; // Reemplazar con tu ID real de Formspree
 
 const ContactFormSection = () => {
   const [form, setForm] = useState({
     nombre: "",
-    telefono: "",
     email: "",
-    clinica: "",
+    telefono: "",
     mensaje: "",
   });
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Hola, vengo de la web. Quiero automatizar mi clínica.\n\nNombre: ${form.nombre}\nTeléfono: ${form.telefono}\nEmail: ${form.email}\nClínica: ${form.clinica}\nMensaje: ${form.mensaje}`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
+    setSending(true);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.nombre,
+          email: form.email,
+          phone: form.telefono,
+          message: form.mensaje,
+        }),
+      });
+      if (res.ok) {
+        toast.success("¡Mensaje enviado! Te contactaremos pronto.");
+        setForm({ nombre: "", email: "", telefono: "", mensaje: "" });
+      } else {
+        toast.error("Error al enviar. Inténtalo de nuevo.");
+      }
+    } catch {
+      toast.error("Error de conexión. Inténtalo de nuevo.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -48,7 +72,7 @@ const ContactFormSection = () => {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label className="text-sm font-body text-muted-foreground mb-2 block">Nombre</label>
+              <label className="text-sm font-body text-muted-foreground mb-2 block">Nombre *</label>
               <Input
                 required
                 placeholder="Tu nombre"
@@ -58,21 +82,7 @@ const ContactFormSection = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-body text-muted-foreground mb-2 block">Teléfono</label>
-              <Input
-                required
-                type="tel"
-                placeholder="+34 600 000 000"
-                value={form.telefono}
-                onChange={(e) => setForm({ ...form, telefono: e.target.value })}
-                className="bg-secondary/50 border-border"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label className="text-sm font-body text-muted-foreground mb-2 block">Email</label>
+              <label className="text-sm font-body text-muted-foreground mb-2 block">Email *</label>
               <Input
                 required
                 type="email"
@@ -82,21 +92,23 @@ const ContactFormSection = () => {
                 className="bg-secondary/50 border-border"
               />
             </div>
-            <div>
-              <label className="text-sm font-body text-muted-foreground mb-2 block">Nombre de la clínica</label>
-              <Input
-                required
-                placeholder="Tu clínica"
-                value={form.clinica}
-                onChange={(e) => setForm({ ...form, clinica: e.target.value })}
-                className="bg-secondary/50 border-border"
-              />
-            </div>
           </div>
 
           <div>
-            <label className="text-sm font-body text-muted-foreground mb-2 block">Mensaje</label>
+            <label className="text-sm font-body text-muted-foreground mb-2 block">Teléfono (opcional)</label>
+            <Input
+              type="tel"
+              placeholder="+34 600 000 000"
+              value={form.telefono}
+              onChange={(e) => setForm({ ...form, telefono: e.target.value })}
+              className="bg-secondary/50 border-border"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-body text-muted-foreground mb-2 block">Mensaje *</label>
             <Textarea
+              required
               placeholder="Cuéntanos sobre tu clínica y lo que necesitas..."
               value={form.mensaje}
               onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
@@ -106,10 +118,11 @@ const ContactFormSection = () => {
 
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-8 py-5 rounded-xl btn-float animate-glow-pulse"
+            disabled={sending}
+            className="w-full flex items-center justify-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-8 py-5 rounded-xl btn-float animate-glow-pulse disabled:opacity-60"
           >
             <Send className="w-5 h-5" />
-            Quiero automatizar mi clínica
+            {sending ? "Enviando..." : "Enviar mensaje"}
           </button>
         </motion.form>
       </div>
