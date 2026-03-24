@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Clock, MessageSquareWarning, Monitor, CalendarX } from "lucide-react";
 
-const WA_LINK = "https://wa.me/?text=Hola%2C%20vengo%20de%20la%20web.%20Quiero%20ver%20c%C3%B3mo%20funciona%20la%20automatizaci%C3%B3n%20de%20WhatsApp%20en%20mi%20cl%C3%ADnica";
+const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20resolver%20estos%20problemas";
 
 const problems = [
   {
