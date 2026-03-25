@@ -1,48 +1,7 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Send } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
-
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/TU_ID"; // Reemplazar con tu ID real de Formspree
 
 const ContactFormSection = () => {
-  const [form, setForm] = useState({
-    nombre: "",
-    email: "",
-    telefono: "",
-    mensaje: "",
-  });
-  const [sending, setSending] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.nombre,
-          email: form.email,
-          phone: form.telefono,
-          message: form.mensaje,
-        }),
-      });
-      if (res.ok) {
-        toast.success("¡Mensaje enviado! Te contactaremos pronto.");
-        setForm({ nombre: "", email: "", telefono: "", mensaje: "" });
-      } else {
-        toast.error("Error al enviar. Inténtalo de nuevo.");
-      }
-    } catch {
-      toast.error("Error de conexión. Inténtalo de nuevo.");
-    } finally {
-      setSending(false);
-    }
-  };
-
   return (
     <section id="contacto" className="relative py-24 bg-secondary/20 section-glow scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -64,75 +23,77 @@ const ContactFormSection = () => {
 
         <motion.form
           id="contact-form"
+          action="https://formspree.io/f/xabcd123"
+          method="POST"
           data-endpoint="/api/lead"
-          onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto p-8 rounded-2xl gold-border-glow bg-card space-y-5"
+          className="max-w-2xl mx-auto p-8 rounded-2xl gold-border-glow bg-card space-y-5 group"
+          noValidate={false}
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label htmlFor="name" className="text-sm font-body text-muted-foreground mb-2 block">Nombre *</label>
-              <Input
-                id="name"
-                name="name"
+              <label htmlFor="nombre" className="text-sm font-body text-muted-foreground mb-2 block">Nombre *</label>
+              <input
+                id="nombre"
+                name="nombre"
                 required
                 placeholder="Tu nombre"
-                value={form.nombre}
-                onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-                className="bg-secondary/50 border-border"
+                className="peer flex h-10 w-full rounded-md border border-input bg-secondary/50 px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm invalid:[&:not(:placeholder-shown)]:border-destructive invalid:[&:not(:placeholder-shown)]:ring-destructive/30"
               />
+              <p className="hidden peer-invalid:peer-[&:not(:placeholder-shown)]:block text-sm text-destructive mt-1">
+                El nombre es obligatorio.
+              </p>
             </div>
             <div>
               <label htmlFor="email" className="text-sm font-body text-muted-foreground mb-2 block">Email *</label>
-              <Input
+              <input
                 id="email"
                 name="email"
                 required
                 type="email"
                 placeholder="tu@email.com"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="bg-secondary/50 border-border"
+                className="peer flex h-10 w-full rounded-md border border-input bg-secondary/50 px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm invalid:[&:not(:placeholder-shown)]:border-destructive invalid:[&:not(:placeholder-shown)]:ring-destructive/30"
               />
+              <p className="hidden peer-invalid:peer-[&:not(:placeholder-shown)]:block text-sm text-destructive mt-1">
+                Introduce un email válido.
+              </p>
             </div>
           </div>
 
           <div>
-            <label htmlFor="phone" className="text-sm font-body text-muted-foreground mb-2 block">Teléfono (opcional)</label>
-            <Input
-              id="phone"
-              name="phone"
+            <label htmlFor="teléfono" className="text-sm font-body text-muted-foreground mb-2 block">Teléfono (opcional)</label>
+            <input
+              id="teléfono"
+              name="teléfono"
               type="tel"
               placeholder="+34 600 000 000"
-              value={form.telefono}
-              onChange={(e) => setForm({ ...form, telefono: e.target.value })}
-              className="bg-secondary/50 border-border"
+              className="flex h-10 w-full rounded-md border border-input bg-secondary/50 px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm"
             />
           </div>
 
           <div>
-            <label htmlFor="message" className="text-sm font-body text-muted-foreground mb-2 block">Mensaje *</label>
-            <Textarea
-              id="message"
-              name="message"
+            <label htmlFor="mensaje" className="text-sm font-body text-muted-foreground mb-2 block">Mensaje *</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
               required
               placeholder="Cuéntanos sobre tu clínica y lo que necesitas..."
-              value={form.mensaje}
-              onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
-              className="bg-secondary/50 border-border min-h-[100px]"
+              className="peer flex w-full rounded-md border border-input bg-secondary/50 px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm min-h-[100px] invalid:[&:not(:placeholder-shown)]:border-destructive invalid:[&:not(:placeholder-shown)]:ring-destructive/30"
             />
+            <p className="hidden peer-invalid:peer-[&:not(:placeholder-shown)]:block text-sm text-destructive mt-1">
+              El mensaje es obligatorio.
+            </p>
           </div>
 
           <button
             type="submit"
-            disabled={sending}
-            className="w-full flex items-center justify-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-8 py-5 rounded-xl btn-float animate-glow-pulse disabled:opacity-60"
+            className="w-full flex items-center justify-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-8 py-5 rounded-xl btn-float animate-glow-pulse"
           >
             <Send className="w-5 h-5" />
-            {sending ? "Enviando..." : "Enviar mensaje"}
+            Enviar mensaje
           </button>
         </motion.form>
       </div>
