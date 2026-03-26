@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import ChatDemoSection from "@/components/ChatDemoSection";
 import ProblemsSection from "@/components/ProblemsSection";
 import SolutionsSection from "@/components/SolutionsSection";
+import WhyDifferentSection from "@/components/WhyDifferentSection";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CalculatorSection from "@/components/CalculatorSection";
