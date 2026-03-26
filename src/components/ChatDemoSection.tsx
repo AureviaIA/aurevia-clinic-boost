@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Smartphone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import whatsappChat from "@/assets/whatsapp-chat-realistic.jpg";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20probar";
 
