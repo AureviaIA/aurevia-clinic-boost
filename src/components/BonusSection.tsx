@@ -36,7 +36,7 @@ const BonusSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-14">
           {bonuses.map((bonus, i) => (
             <motion.div
               key={i}
