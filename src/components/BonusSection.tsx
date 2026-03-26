@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BookOpen, Copy, BarChart3 } from "lucide-react";
+import { BookOpen, BarChart3 } from "lucide-react";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20obtener%20mis%20bonos";
 
@@ -8,11 +8,6 @@ const bonuses = [
     icon: BookOpen,
     title: 'Ebook "Guía de Captación de Pacientes por WhatsApp"',
     description: "PDF completo con scripts, manejo de objeciones, agendamiento automatizado y checklist final para tu clínica.",
-  },
-  {
-    icon: Copy,
-    title: "Plantilla de mensajes listos para copiar",
-    description: "Scripts completos de captación, calificación, propuesta, objeciones y confirmación para usar de inmediato.",
   },
   {
     icon: BarChart3,
@@ -41,7 +36,7 @@ const BonusSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-14">
           {bonuses.map((bonus, i) => (
             <motion.div
               key={i}
