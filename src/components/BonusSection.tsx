@@ -10,11 +10,6 @@ const bonuses = [
     description: "PDF completo con scripts, manejo de objeciones, agendamiento automatizado y checklist final para tu clínica.",
   },
   {
-    icon: Copy,
-    title: "Plantilla de mensajes listos para copiar",
-    description: "Scripts completos de captación, calificación, propuesta, objeciones y confirmación para usar de inmediato.",
-  },
-  {
     icon: BarChart3,
     title: "Mini auditoría de WhatsApp",
     description: "Tabla editable con KPIs, estado actual, objetivos y acciones sugeridas para optimizar tu WhatsApp.",
