@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BookOpen, Copy, BarChart3 } from "lucide-react";
+import { BookOpen, BarChart3 } from "lucide-react";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20obtener%20mis%20bonos";
 
