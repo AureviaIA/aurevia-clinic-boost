@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Smartphone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import whatsappChat from "@/assets/whatsapp-chat-realistic.jpg";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20probar";
 
@@ -38,39 +39,16 @@ const ChatDemoSection = () => {
             transition={{ duration: 0.6 }}
             className="flex justify-center"
           >
-            <div className="relative w-[300px]">
-              {/* Phone frame */}
-              <div className="rounded-[2.5rem] border-4 border-primary/30 bg-card p-4 shadow-2xl">
-                {/* Status bar */}
-                <div className="flex items-center justify-between px-2 mb-4">
-                  <Smartphone className="w-4 h-4 text-primary" />
-                  <span className="text-xs font-body text-primary font-semibold">WhatsApp</span>
-                  <div className="w-4" />
-                </div>
-                {/* Chat area */}
-                <div className="space-y-3 min-h-[280px]">
-                  {messages.map((msg, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: msg.delay, duration: 0.4 }}
-                      className={`flex ${msg.sender === "patient" ? "justify-start" : "justify-end"}`}
-                    >
-                      <div
-                        className={`chat-bubble ${
-                          msg.sender === "patient" ? "chat-bubble-patient" : "chat-bubble-ia"
-                        }`}
-                      >
-                        {msg.text}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-              {/* Glow effect */}
-              <div className="absolute -inset-4 rounded-[3rem] bg-primary/5 blur-xl -z-10" />
+            <div className="relative w-[320px] sm:w-[360px]">
+              <img
+                src={whatsappChat}
+                alt="Conversación realista de WhatsApp con asistente IA de clínica estética"
+                className="rounded-2xl shadow-2xl border border-primary/20 w-full h-auto"
+                loading="lazy"
+                width={640}
+                height={960}
+              />
+              <div className="absolute -inset-4 rounded-3xl bg-primary/5 blur-xl -z-10" />
             </div>
           </motion.div>
 
