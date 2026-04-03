@@ -1,18 +1,40 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { Calculator, TrendingUp } from "lucide-react";
+import { motion, useSpring, useTransform } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { Calculator, TrendingUp, TrendingDown, Clock } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
 
-const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20estos%20resultados";
+const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20recuperar%20mis%20ingresos";
+
+const AnimatedNumber = ({ value, duration = 0.6, prefix = "", suffix = "" }: { value: number; duration?: number; prefix?: string; suffix?: string }) => {
+  const spring = useSpring(0, { duration: duration * 1000, bounce: 0 });
+  const display = useTransform(spring, (v) => `${prefix}${Math.round(v).toLocaleString("es-ES")}${suffix}`);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    spring.set(value);
+  }, [value, spring]);
+
+  useEffect(() => {
+    const unsubscribe = display.on("change", (v) => {
+      if (ref.current) ref.current.textContent = v;
+    });
+    return unsubscribe;
+  }, [display]);
+
+  return <span ref={ref}>{`${prefix}${Math.round(value).toLocaleString("es-ES")}${suffix}`}</span>;
+};
 
 const CalculatorSection = () => {
-  const [leadsPerMonth, setLeadsPerMonth] = useState(100);
+  const [leads, setLeads] = useState(100);
   const [noShowRate, setNoShowRate] = useState(30);
   const [avgTicket, setAvgTicket] = useState(200);
 
-  const recoveredLeads = Math.round(leadsPerMonth * 0.4 * 0.8);
-  const reducedNoShows = Math.round((leadsPerMonth * (noShowRate / 100)) * 0.4);
-  const extraRevenue = (recoveredLeads + reducedNoShows) * avgTicket;
-  const hoursSaved = 15;
+  const leadsPerdidos = Math.round(leads * (noShowRate / 100));
+  const leadsRecuperados = Math.round(leadsPerdidos * 0.7);
+  const ingresosPerdidos = leadsPerdidos * avgTicket;
+  const ingresosRecuperados = leadsRecuperados * avgTicket;
+  const ingresosAnuales = ingresosRecuperados * 12;
+  const horasAhorradas = Math.round(leads * 0.1);
 
   return (
     <section id="calculadora" className="relative py-24 bg-secondary/20 section-glow scroll-mt-24">
@@ -29,7 +51,7 @@ const CalculatorSection = () => {
             <span className="gold-gradient-text">Calcula</span> tu retorno
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body">
-            Descubre cuánto podrías ganar automatizando tu clínica con IA.
+            Descubre cuánto estás perdiendo y cuánto podrías recuperar con IA.
           </p>
         </motion.div>
 
@@ -38,81 +60,93 @@ const CalculatorSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {/* Inputs */}
-          <div className="space-y-6 p-8 rounded-2xl gold-border-glow bg-card">
+          <div className="space-y-8 p-8 rounded-2xl gold-border-glow bg-card">
             <h3 className="font-display font-semibold text-lg text-foreground flex items-center gap-2">
               <Calculator className="w-5 h-5 text-primary" /> Tus datos
             </h3>
 
             <div>
-              <label className="text-sm font-body text-muted-foreground mb-2 block">
-                Leads por mes: <span className="text-primary font-semibold">{leadsPerMonth}</span>
+              <label className="text-sm font-body text-muted-foreground mb-3 flex justify-between">
+                Leads por mes
+                <span className="text-primary font-semibold text-base">{leads}</span>
               </label>
-              <input
-                type="range"
+              <Slider
                 min={20}
                 max={500}
-                value={leadsPerMonth}
-                onChange={(e) => setLeadsPerMonth(Number(e.target.value))}
-                className="w-full accent-primary"
+                step={5}
+                value={[leads]}
+                onValueChange={([v]) => setLeads(v)}
               />
             </div>
 
             <div>
-              <label className="text-sm font-body text-muted-foreground mb-2 block">
-                Tasa de no-shows: <span className="text-primary font-semibold">{noShowRate}%</span>
+              <label className="text-sm font-body text-muted-foreground mb-3 flex justify-between">
+                Tasa de no-shows
+                <span className="text-primary font-semibold text-base">{noShowRate}%</span>
               </label>
-              <input
-                type="range"
+              <Slider
                 min={5}
                 max={60}
-                value={noShowRate}
-                onChange={(e) => setNoShowRate(Number(e.target.value))}
-                className="w-full accent-primary"
+                step={1}
+                value={[noShowRate]}
+                onValueChange={([v]) => setNoShowRate(v)}
               />
             </div>
 
             <div>
-              <label className="text-sm font-body text-muted-foreground mb-2 block">
-                Ticket promedio (€): <span className="text-primary font-semibold">{avgTicket}€</span>
+              <label className="text-sm font-body text-muted-foreground mb-3 flex justify-between">
+                Ticket promedio
+                <span className="text-primary font-semibold text-base">{avgTicket}€</span>
               </label>
-              <input
-                type="range"
+              <Slider
                 min={50}
                 max={1000}
                 step={10}
-                value={avgTicket}
-                onChange={(e) => setAvgTicket(Number(e.target.value))}
-                className="w-full accent-primary"
+                value={[avgTicket]}
+                onValueChange={([v]) => setAvgTicket(v)}
               />
             </div>
           </div>
 
           {/* Results */}
-          <div className="space-y-5 p-8 rounded-2xl gold-border-glow bg-card">
+          <div className="space-y-4 p-8 rounded-2xl gold-border-glow bg-card">
             <h3 className="font-display font-semibold text-lg text-foreground flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-primary" /> Resultados estimados
             </h3>
 
-            <div className="space-y-4">
-              <div className="p-4 rounded-xl bg-secondary/50">
-                <p className="text-sm text-muted-foreground font-body">Leads recuperados/mes</p>
-                <p className="text-2xl font-display font-bold gold-gradient-text">+{recoveredLeads}</p>
-              </div>
-              <div className="p-4 rounded-xl bg-secondary/50">
-                <p className="text-sm text-muted-foreground font-body">No-shows evitados/mes</p>
-                <p className="text-2xl font-display font-bold gold-gradient-text">+{reducedNoShows}</p>
-              </div>
-              <div className="p-4 rounded-xl bg-secondary/50">
-                <p className="text-sm text-muted-foreground font-body">Ingresos extra estimados/mes</p>
-                <p className="text-3xl font-display font-bold gold-gradient-text">+{extraRevenue.toLocaleString()}€</p>
-              </div>
-              <div className="p-4 rounded-xl bg-secondary/50">
-                <p className="text-sm text-muted-foreground font-body">Horas ahorradas/semana</p>
-                <p className="text-2xl font-display font-bold gold-gradient-text">{hoursSaved}h</p>
-              </div>
+            <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20">
+              <p className="text-sm text-muted-foreground font-body flex items-center gap-1.5">
+                <TrendingDown className="w-4 h-4 text-destructive" /> Estás perdiendo al mes
+              </p>
+              <p className="text-2xl font-display font-bold text-destructive mt-1">
+                -<AnimatedNumber value={ingresosPerdidos} suffix="€" />
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
+              <p className="text-sm text-muted-foreground font-body">Puedes recuperar al mes</p>
+              <p className="text-2xl font-display font-bold gold-gradient-text mt-1">
+                +<AnimatedNumber value={ingresosRecuperados} suffix="€" />
+              </p>
+            </div>
+
+            <div className="p-5 rounded-xl bg-primary/15 border border-primary/30">
+              <p className="text-sm text-muted-foreground font-body">Ingresos recuperados al año</p>
+              <p className="text-3xl font-display font-bold gold-gradient-text mt-1">
+                +<AnimatedNumber value={ingresosAnuales} suffix="€" />
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-secondary/50">
+              <p className="text-sm text-muted-foreground font-body flex items-center gap-1.5">
+                <Clock className="w-4 h-4 text-primary" /> Horas ahorradas por semana
+              </p>
+              <p className="text-2xl font-display font-bold gold-gradient-text mt-1">
+                <AnimatedNumber value={horasAhorradas} suffix="h" />
+              </p>
             </div>
           </div>
         </motion.div>
@@ -122,9 +156,9 @@ const CalculatorSection = () => {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
+            className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float text-lg"
           >
-            Quiero estos resultados
+            Ver cómo recuperarlo
           </a>
         </div>
       </div>
