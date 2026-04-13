@@ -38,6 +38,7 @@ interface ConvoState {
   phone: string;
   chosenSlot: string;
   objectionCount: number;
+  availableSlots: string[];
 }
 
 const initialState: ConvoState = {
