@@ -38,6 +38,7 @@ interface ConvoState {
   phone: string;
   chosenSlot: string;
   objectionCount: number;
+  availableSlots: string[];
 }
 
 const initialState: ConvoState = {
@@ -49,6 +50,7 @@ const initialState: ConvoState = {
   phone: "",
   chosenSlot: "",
   objectionCount: 0,
+  availableSlots: [],
 };
 
 const NEGATIVE_KW = [
@@ -249,6 +251,7 @@ function processMessage(
 
     case "ask_preference": {
       const slots = getSlots();
+      s.availableSlots = slots;
       s.stage = "offer_slots";
       return {
         responses: [
@@ -269,7 +272,7 @@ function processMessage(
           : lower.includes("2") || lower.includes("segund")
             ? 2
             : 3;
-      const slots = getSlots();
+      const slots = s.availableSlots.length >= 3 ? s.availableSlots : getSlots();
       s.chosenSlot = slots[pick - 1] || slots[0];
       s.stage = "ask_email";
       return {
@@ -287,7 +290,7 @@ function processMessage(
         s.stage = "confirm_email";
         return {
           responses: [
-            "Me lo deletreas para asegurarme de escribirlo bien? 😊",
+            "Podrías repetirlo para verificar que está bien? 😊",
           ],
           newState: s,
         };
