@@ -290,7 +290,7 @@ function processMessage(
         s.stage = "confirm_email";
         return {
           responses: [
-            "Me lo deletreas para asegurarme de escribirlo bien? 😊",
+            "Podrías repetirlo para verificar que está bien? 😊",
           ],
           newState: s,
         };
