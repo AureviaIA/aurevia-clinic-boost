@@ -176,7 +176,7 @@ function processMessage(
       return {
         responses: [
           `${s.name ? `Hola ${s.name}! 😊` : "Hola! 😊"} Hablas con el equipo de Aurevia.`,
-          "Somos una agencia de automatización con IA que ayuda a empresarios de medicina estética a mejorar su captación de pacientes.",
+          "Somos una agencia de automatización con IA que ayuda a empresarios a mejorar su negocio.",
           "Me cuentas un poco sobre tu negocio? A qué se dedican?",
         ],
         newState: s,
