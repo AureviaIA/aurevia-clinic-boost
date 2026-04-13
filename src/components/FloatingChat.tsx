@@ -50,6 +50,7 @@ const initialState: ConvoState = {
   phone: "",
   chosenSlot: "",
   objectionCount: 0,
+  availableSlots: [],
 };
 
 const NEGATIVE_KW = [
