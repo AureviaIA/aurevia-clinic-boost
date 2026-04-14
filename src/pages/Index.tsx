@@ -1,12 +1,15 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ChatDemoSection from "@/components/ChatDemoSection";
+import LiveSystemSection from "@/components/LiveSystemSection";
+import ImpactSection from "@/components/ImpactSection";
 import ProblemsSection from "@/components/ProblemsSection";
+import ProcessSection from "@/components/ProcessSection";
+import CalculatorSection from "@/components/CalculatorSection";
+import ChatDemoSection from "@/components/ChatDemoSection";
+import DashboardSection from "@/components/DashboardSection";
 import SolutionsSection from "@/components/SolutionsSection";
 import WhyDifferentSection from "@/components/WhyDifferentSection";
-import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import CalculatorSection from "@/components/CalculatorSection";
 import FAQSection from "@/components/FAQSection";
 import BonusSection from "@/components/BonusSection";
 import ContactFormSection from "@/components/ContactFormSection";
@@ -15,16 +18,19 @@ import FloatingChat from "@/components/FloatingChat";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#0b0b0b]">
       <Navbar />
       <HeroSection />
-      <ChatDemoSection />
+      <LiveSystemSection />
+      <ImpactSection />
       <ProblemsSection />
+      <ProcessSection />
+      <CalculatorSection />
+      <ChatDemoSection />
+      <DashboardSection />
       <SolutionsSection />
       <WhyDifferentSection />
-      <ProcessSection />
       <TestimonialsSection />
-      <CalculatorSection />
       <FAQSection />
       <BonusSection />
       <ContactFormSection />

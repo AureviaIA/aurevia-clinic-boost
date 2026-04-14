@@ -1,6 +1,6 @@
 import { motion, useSpring, useTransform } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import { Calculator, TrendingUp, TrendingDown, Clock } from "lucide-react";
+import { TrendingUp, TrendingDown, Clock, BarChart3 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20recuperar%20mis%20ingresos";
@@ -10,9 +10,7 @@ const AnimatedNumber = ({ value, duration = 0.6, prefix = "", suffix = "" }: { v
   const display = useTransform(spring, (v) => `${prefix}${Math.round(v).toLocaleString("es-ES")}${suffix}`);
   const ref = useRef<HTMLSpanElement>(null);
 
-  useEffect(() => {
-    spring.set(value);
-  }, [value, spring]);
+  useEffect(() => { spring.set(value); }, [value, spring]);
 
   useEffect(() => {
     const unsubscribe = display.on("change", (v) => {
@@ -37,7 +35,7 @@ const CalculatorSection = () => {
   const horasAhorradas = Math.round(leads * 0.1);
 
   return (
-    <section id="calculadora" className="relative py-24 bg-secondary/20 section-glow scroll-mt-24">
+    <section id="calculadora" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="container px-6">
         <motion.div
@@ -47,11 +45,15 @@ const CalculatorSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-            <span className="gold-gradient-text">Calcula</span> tu retorno
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-6">
+            <BarChart3 className="w-3.5 h-3.5 text-primary" />
+            <span className="text-xs font-body text-primary uppercase tracking-widest">Revenue Impact Simulator</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
+            Simula tu <span className="gold-gradient-text">impacto en ingresos</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body">
-            Descubre cuánto estás perdiendo y cuánto podrías recuperar con IA.
+            Mueve los sliders y descubre cuánto puedes recuperar.
           </p>
         </motion.div>
 
@@ -60,66 +62,43 @@ const CalculatorSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {/* Inputs */}
           <div className="space-y-8 p-8 rounded-2xl gold-border-glow bg-card">
-            <h3 className="font-display font-semibold text-lg text-foreground flex items-center gap-2">
-              <Calculator className="w-5 h-5 text-primary" /> Tus datos
-            </h3>
+            <h3 className="font-display font-semibold text-lg text-foreground">Tus datos</h3>
 
             <div>
               <label className="text-sm font-body text-muted-foreground mb-3 flex justify-between">
-                Leads por mes
-                <span className="text-primary font-semibold text-base">{leads}</span>
+                Leads por mes <span className="text-primary font-semibold text-base">{leads}</span>
               </label>
-              <Slider
-                min={20}
-                max={500}
-                step={5}
-                value={[leads]}
-                onValueChange={([v]) => setLeads(v)}
-              />
+              <Slider min={20} max={500} step={5} value={[leads]} onValueChange={([v]) => setLeads(v)} />
             </div>
 
             <div>
               <label className="text-sm font-body text-muted-foreground mb-3 flex justify-between">
-                Tasa de no-shows
-                <span className="text-primary font-semibold text-base">{noShowRate}%</span>
+                Tasa de no-shows <span className="text-primary font-semibold text-base">{noShowRate}%</span>
               </label>
-              <Slider
-                min={5}
-                max={60}
-                step={1}
-                value={[noShowRate]}
-                onValueChange={([v]) => setNoShowRate(v)}
-              />
+              <Slider min={5} max={60} step={1} value={[noShowRate]} onValueChange={([v]) => setNoShowRate(v)} />
             </div>
 
             <div>
               <label className="text-sm font-body text-muted-foreground mb-3 flex justify-between">
-                Ticket promedio
-                <span className="text-primary font-semibold text-base">{avgTicket}€</span>
+                Ticket promedio <span className="text-primary font-semibold text-base">{avgTicket}€</span>
               </label>
-              <Slider
-                min={50}
-                max={1000}
-                step={10}
-                value={[avgTicket]}
-                onValueChange={([v]) => setAvgTicket(v)}
-              />
+              <Slider min={50} max={1000} step={10} value={[avgTicket]} onValueChange={([v]) => setAvgTicket(v)} />
             </div>
           </div>
 
           {/* Results */}
           <div className="space-y-4 p-8 rounded-2xl gold-border-glow bg-card">
             <h3 className="font-display font-semibold text-lg text-foreground flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-primary" /> Resultados estimados
+              <TrendingUp className="w-5 h-5 text-primary" /> Resultados
             </h3>
 
             <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20">
-              <p className="text-sm text-muted-foreground font-body flex items-center gap-1.5">
-                <TrendingDown className="w-4 h-4 text-destructive" /> Estás perdiendo al mes
+              <p className="text-xs text-muted-foreground font-body flex items-center gap-1.5 uppercase tracking-wider">
+                <TrendingDown className="w-3.5 h-3.5 text-destructive" /> Ingresos perdidos / mes
               </p>
               <p className="text-2xl font-display font-bold text-destructive mt-1">
                 -<AnimatedNumber value={ingresosPerdidos} suffix="€" />
@@ -127,22 +106,22 @@ const CalculatorSection = () => {
             </div>
 
             <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
-              <p className="text-sm text-muted-foreground font-body">Puedes recuperar al mes</p>
+              <p className="text-xs text-muted-foreground font-body uppercase tracking-wider">Ingresos recuperados / mes</p>
               <p className="text-2xl font-display font-bold gold-gradient-text mt-1">
                 +<AnimatedNumber value={ingresosRecuperados} suffix="€" />
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-primary/15 border border-primary/30">
-              <p className="text-sm text-muted-foreground font-body">Ingresos recuperados al año</p>
+            <div className="p-5 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/30">
+              <p className="text-xs text-muted-foreground font-body uppercase tracking-wider">Ingresos recuperados / año</p>
               <p className="text-3xl font-display font-bold gold-gradient-text mt-1">
                 +<AnimatedNumber value={ingresosAnuales} suffix="€" />
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-secondary/50">
-              <p className="text-sm text-muted-foreground font-body flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-primary" /> Horas ahorradas por semana
+            <div className="p-4 rounded-xl bg-card border border-border/30">
+              <p className="text-xs text-muted-foreground font-body flex items-center gap-1.5 uppercase tracking-wider">
+                <Clock className="w-3.5 h-3.5 text-primary" /> Horas ahorradas / semana
               </p>
               <p className="text-2xl font-display font-bold gold-gradient-text mt-1">
                 <AnimatedNumber value={horasAhorradas} suffix="h" />
