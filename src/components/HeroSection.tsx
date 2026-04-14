@@ -42,13 +42,13 @@ const HeroSection = () => {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-display font-bold leading-tight mb-6">
-              Convierte mensajes de WhatsApp en{" "}
-              <span className="gold-gradient-text">citas automáticamente</span>{" "}
-              para tu clínica
+              No es IA, es{" "}
+              <span className="gold-gradient-text">crecimiento</span>. Un sistema que{" "}
+              <span className="gold-gradient-text">conecta todo tu negocio</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mb-10 font-body leading-relaxed">
-              Responde al instante a todos tus pacientes, incluso fuera de horario, sin contratar más personal.
+            <p className="text-lg sm:text-xl text-foreground max-w-xl mb-10 font-display font-semibold tracking-wide leading-relaxed">
+              No creamos herramientas… Creamos <span className="uppercase font-bold">sistemas que facturan</span>.
             </p>
 
             <a
