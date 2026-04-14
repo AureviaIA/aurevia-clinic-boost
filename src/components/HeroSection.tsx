@@ -43,7 +43,19 @@ const HeroSection = () => {
 
             <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-display font-bold leading-tight mb-6">
               No es IA, es{" "}
-              <span className="gold-gradient-text">crecimiento</span>. Un sistema que{" "}
+              <motion.span
+                className="gold-gradient-text uppercase inline-block"
+                style={{ textShadow: "0 0 20px hsl(51 100% 50% / 0.5), 0 0 40px hsl(51 100% 50% / 0.3)" }}
+                animate={{ textShadow: [
+                  "0 0 20px hsl(51 100% 50% / 0.5), 0 0 40px hsl(51 100% 50% / 0.3)",
+                  "0 0 30px hsl(51 100% 50% / 0.8), 0 0 60px hsl(51 100% 50% / 0.5)",
+                  "0 0 20px hsl(51 100% 50% / 0.5), 0 0 40px hsl(51 100% 50% / 0.3)",
+                ]}}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                CRECIMIENTO
+              </motion.span>
+              . Un sistema que{" "}
               <span className="gold-gradient-text">conecta todo tu negocio</span>
             </h1>
 
