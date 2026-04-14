@@ -60,7 +60,19 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-foreground max-w-xl mb-10 font-display font-semibold tracking-wide leading-relaxed">
-              No creamos herramientas… Creamos <span className="uppercase font-bold">sistemas que facturan</span>.
+              No creamos herramientas… Creamos{" "}
+              <motion.span
+                className="gold-gradient-text uppercase font-bold inline-block"
+                style={{ textShadow: "0 0 20px hsl(51 100% 50% / 0.5), 0 0 40px hsl(51 100% 50% / 0.3)" }}
+                animate={{ textShadow: [
+                  "0 0 20px hsl(51 100% 50% / 0.5), 0 0 40px hsl(51 100% 50% / 0.3)",
+                  "0 0 30px hsl(51 100% 50% / 0.8), 0 0 60px hsl(51 100% 50% / 0.5)",
+                  "0 0 20px hsl(51 100% 50% / 0.5), 0 0 40px hsl(51 100% 50% / 0.3)",
+                ]}}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                SISTEMAS QUE FACTURAN
+              </motion.span>.
             </p>
 
             <a
