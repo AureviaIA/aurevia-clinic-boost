@@ -1,113 +1,76 @@
 import { motion } from "framer-motion";
-import { MessageSquare } from "lucide-react";
-import clinicCorridor from "@/assets/clinic-corridor.jpg";
+import { MessageSquare, Bot, CalendarCheck } from "lucide-react";
 
-const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20conocer%20más%20sobre%20la%20solución";
-const WA_CONSULT = "https://wa.me/34640624484?text=Hola%20quiero%20agendar%20consultoria%20gratuita";
+const steps = [
+  {
+    icon: MessageSquare,
+    num: "01",
+    title: "El paciente escribe",
+    description: "A través de WhatsApp, web o redes sociales. A cualquier hora.",
+  },
+  {
+    icon: Bot,
+    num: "02",
+    title: "La IA responde, cualifica y convence",
+    description: "Respuesta instantánea. Identifica necesidades. Maneja objeciones.",
+  },
+  {
+    icon: CalendarCheck,
+    num: "03",
+    title: "Se agenda la cita automáticamente",
+    description: "Confirmación por email y SMS. Sin intervención humana.",
+  },
+];
 
 const ProcessSection = () => {
   return (
-    <section id="proceso" className="relative py-0 bg-background scroll-mt-24">
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
-        {/* Left column – image */}
+    <section id="proceso" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      <div className="container px-6">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="relative hidden lg:block"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          <img
-            src={clinicCorridor}
-            alt="Pasillo de clínica estética de ultra-lujo con arcos dorados"
-            className="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div className="absolute inset-y-0 right-0 w-px bg-primary/30" />
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
+            Cómo <span className="gold-gradient-text">funciona</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body">
+            Tres pasos. Cero complicaciones. Resultados inmediatos.
+          </p>
         </motion.div>
 
-        {/* Right column – text */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-16 bg-card/60 border border-primary/20"
-        >
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="text-lg font-display italic text-primary mb-4"
-          >
-            ¿Listo para descubrirlo?
-          </motion.p>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold gold-gradient-text mb-6 leading-tight"
-          >
-            Descubre cómo esto podría funcionar en tu clínica
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-foreground/85 font-body leading-relaxed mb-8 max-w-lg"
-          >
-            Cada negocio es único. Por eso empezamos con una conversación sin compromiso para
-            entender tu situación y mostrarte exactamente qué impacto podría tener en tu clínica.
-          </motion.p>
-
-          {/* Callout box */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex gap-4 p-5 rounded-xl bg-secondary/40 border border-primary/20 mb-10 max-w-lg"
-          >
-            <div className="flex-shrink-0 w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center mt-0.5">
-              <MessageSquare className="w-4 h-4 text-primary" />
-            </div>
-            <p className="text-sm text-foreground/90 font-body leading-relaxed">
-              <span className="font-semibold">Sin tecnicismos. Sin promesas vacías.</span> Solo una conversación honesta sobre cómo la
-              IA puede ayudarte a crecer de forma inteligente.
-            </p>
-          </motion.div>
-
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="flex flex-wrap gap-4"
-          >
-            <a
-              href={WA_CONSULT}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {steps.map((step, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.5 }}
+              className="relative text-center group"
             >
-              Reserva tu sesión gratuita
-            </a>
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-primary/40 text-primary font-body font-semibold px-8 py-4 rounded-xl hover:bg-primary/10 transition-colors"
-            >
-              Conoce más sobre la solución
-            </a>
-          </motion.div>
-        </motion.div>
+              {/* Connector line */}
+              {i < steps.length - 1 && (
+                <div className="hidden md:block absolute top-16 left-[60%] w-[80%] h-px bg-gradient-to-r from-primary/30 to-transparent" />
+              )}
+
+              <div className="relative mb-6 mx-auto">
+                <div className="w-20 h-20 rounded-2xl gold-border-glow bg-card flex items-center justify-center mx-auto group-hover:border-primary/50 transition-colors">
+                  <step.icon className="w-8 h-8 text-primary" />
+                </div>
+                <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full gold-gradient-bg flex items-center justify-center text-xs font-display font-bold text-primary-foreground">
+                  {step.num}
+                </span>
+              </div>
+
+              <h3 className="text-lg font-display font-bold text-foreground mb-3">{step.title}</h3>
+              <p className="text-sm text-muted-foreground font-body leading-relaxed max-w-xs mx-auto">{step.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
