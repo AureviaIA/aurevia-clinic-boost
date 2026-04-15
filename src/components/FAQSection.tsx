@@ -15,7 +15,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
+    <section id="faq" className="relative py-28 bg-[#0b0b0b] scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="container px-6">
         <motion.div
@@ -23,7 +23,7 @@ const FAQSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
             Preguntas <span className="gold-gradient-text">frecuentes</span>
@@ -38,9 +38,9 @@ const FAQSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06, duration: 0.4 }}
-              className="rounded-xl gold-border-glow bg-card overflow-hidden"
+              className="rounded-xl glass-card overflow-hidden"
             >
-              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left">
+              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left hover:bg-primary/[0.02] transition-colors">
                 <span className="font-display font-semibold text-foreground pr-4 text-sm">{faq.q}</span>
                 <ChevronDown className={`w-5 h-5 text-primary shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`} />
               </button>

@@ -13,12 +13,16 @@ const manifestos = [
 
 const ImpactSection = () => {
   return (
-    <section className="relative py-32 bg-[#0b0b0b] overflow-hidden">
+    <section className="relative py-36 bg-[#0b0b0b] overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-primary/[0.02]" />
+      
+      {/* Decorative side lines */}
+      <div className="absolute left-8 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-primary/10 to-transparent hidden lg:block" />
+      <div className="absolute right-8 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-primary/10 to-transparent hidden lg:block" />
 
       <div className="container px-6 relative z-10">
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-8">
           {manifestos.map((text, i) => (
             <motion.div
               key={i}
@@ -36,6 +40,17 @@ const ImpactSection = () => {
               >
                 {text}
               </h3>
+              {/* Subtle underline for gold items */}
+              {i % 2 !== 0 && (
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 + 0.3 }}
+                  className="h-px w-32 mt-3 origin-left"
+                  style={{ background: "linear-gradient(90deg, hsl(51 100% 50% / 0.4), transparent)" }}
+                />
+              )}
             </motion.div>
           ))}
         </div>
@@ -45,7 +60,7 @@ const ImpactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-16"
+          className="text-center mt-20"
         >
           <a
             href={WA_LINK}
