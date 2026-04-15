@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { X, Check, MessageCircle } from "lucide-react";
+import { X, Check, MessageCircle, ArrowRight } from "lucide-react";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20este%20sistema";
 
@@ -19,7 +19,7 @@ const after = [
 
 const ProblemsSection = () => {
   return (
-    <section id="problemas" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
+    <section id="problemas" className="relative py-28 bg-[#0b0b0b] scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="container px-6">
         <motion.div
@@ -27,7 +27,7 @@ const ProblemsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
             Antes vs <span className="gold-gradient-text">Después</span>
@@ -37,14 +37,14 @@ const ProblemsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
           {/* Before */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-2xl bg-card border border-destructive/20 p-8"
+            className="rounded-2xl glass-card border-destructive/20 p-8 hover-lift"
           >
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-10 rounded-lg bg-destructive/20 flex items-center justify-center">
@@ -69,13 +69,17 @@ const ProblemsSection = () => {
             </div>
           </motion.div>
 
+          {/* Arrow between (desktop) */}
+          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+          </div>
+
           {/* After */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-2xl bg-card border border-primary/20 p-8"
+            className="rounded-2xl glass-card border-primary/20 p-8 hover-lift"
           >
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">

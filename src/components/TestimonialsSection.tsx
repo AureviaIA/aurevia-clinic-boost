@@ -26,14 +26,14 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ t }: { t: typeof testimonials[number] }) => (
-  <div className="p-8 rounded-2xl gold-border-glow bg-card relative h-full flex flex-col">
+  <div className="p-8 rounded-2xl glass-card relative h-full flex flex-col group hover-lift">
     <Quote className="w-8 h-8 text-primary/20 absolute top-6 right-6" />
     <div className="flex gap-1 mb-4">
       {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 text-primary fill-primary" />)}
     </div>
     <p className="text-foreground font-body leading-relaxed mb-6 italic flex-1">"{t.quote}"</p>
     <div className="flex items-center gap-3">
-      <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/30">
+      <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary/30 group-hover:ring-primary/50 transition-all">
         <img src={t.image} alt={t.name} className="w-full h-full object-cover" loading="lazy" width={48} height={48} />
       </div>
       <div>
@@ -75,7 +75,7 @@ const TestimonialsSection = () => {
   const totalSlides = Math.ceil(testimonials.length / 2);
 
   return (
-    <section id="testimonios" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
+    <section id="testimonios" className="relative py-28 bg-[#0b0b0b] scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="container px-6">
         <motion.div
@@ -83,7 +83,7 @@ const TestimonialsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
             Resultados <span className="gold-gradient-text">reales</span>
@@ -111,10 +111,10 @@ const TestimonialsSection = () => {
             </div>
           </div>
 
-          <button onClick={scrollPrev} disabled={!canScrollPrev} className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card border border-primary/30 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors disabled:opacity-30" aria-label="Anterior">
+          <button onClick={scrollPrev} disabled={!canScrollPrev} className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary/10 transition-colors disabled:opacity-30" aria-label="Anterior">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button onClick={scrollNext} disabled={!canScrollNext} className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card border border-primary/30 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors disabled:opacity-30" aria-label="Siguiente">
+          <button onClick={scrollNext} disabled={!canScrollNext} className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary/10 transition-colors disabled:opacity-30" aria-label="Siguiente">
             <ChevronRight className="w-5 h-5" />
           </button>
         </motion.div>

@@ -5,9 +5,12 @@ const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20activar%20el%20s
 
 const ContactFormSection = () => {
   return (
-    <section id="contacto" className="relative py-32 bg-[#0b0b0b] scroll-mt-24">
+    <section id="contacto" className="relative py-36 bg-[#0b0b0b] scroll-mt-24 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent" />
+      
+      {/* Large ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/[0.04] blur-[200px]" />
 
       <div className="container px-6 relative z-10">
         <motion.div
@@ -17,9 +20,13 @@ const ContactFormSection = () => {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mx-auto text-center"
         >
-          <div className="w-20 h-20 rounded-2xl gold-gradient-bg flex items-center justify-center mx-auto mb-8">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="w-20 h-20 rounded-2xl gold-gradient-bg flex items-center justify-center mx-auto mb-8 shadow-lg relative"
+          >
             <Zap className="w-10 h-10 text-primary-foreground" />
-          </div>
+            <span className="absolute inset-0 rounded-2xl border-2 border-primary/30 animate-pulse-ring" />
+          </motion.div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-6 text-foreground">
             <span className="gold-gradient-text">Activar sistema</span> en mi clínica

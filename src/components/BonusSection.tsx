@@ -10,7 +10,7 @@ const bonuses = [
 
 const BonusSection = () => {
   return (
-    <section id="bonus" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
+    <section id="bonus" className="relative py-28 bg-[#0b0b0b] scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="container px-6">
         <motion.div
@@ -18,7 +18,7 @@ const BonusSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
             Bonus <span className="gold-gradient-text">exclusivos</span>
@@ -28,7 +28,7 @@ const BonusSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16">
           {bonuses.map((bonus, i) => (
             <motion.div
               key={i}
@@ -36,9 +36,10 @@ const BonusSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
-              className="p-8 rounded-xl gold-border-glow bg-card text-center group hover:border-primary/40 transition-all"
+              whileHover={{ y: -4 }}
+              className="p-8 rounded-xl glass-card text-center group"
             >
-              <div className="w-14 h-14 rounded-xl gold-gradient-bg flex items-center justify-center mb-6 mx-auto">
+              <div className="w-14 h-14 rounded-xl gold-gradient-bg flex items-center justify-center mb-6 mx-auto shadow-lg">
                 <bonus.icon className="w-7 h-7 text-primary-foreground" />
               </div>
               <h3 className="text-lg font-display font-semibold mb-3 text-foreground">{bonus.title}</h3>

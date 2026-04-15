@@ -35,17 +35,19 @@ const CalculatorSection = () => {
   const horasAhorradas = Math.round(leads * 0.1);
 
   return (
-    <section id="calculadora" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
+    <section id="calculadora" className="relative py-28 bg-[#0b0b0b] scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      <div className="container px-6">
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-primary/[0.02] blur-[150px]" />
+      
+      <div className="container px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-6">
             <BarChart3 className="w-3.5 h-3.5 text-primary" />
             <span className="text-xs font-body text-primary uppercase tracking-widest">Revenue Impact Simulator</span>
           </div>
@@ -62,10 +64,10 @@ const CalculatorSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {/* Inputs */}
-          <div className="space-y-8 p-8 rounded-2xl gold-border-glow bg-card">
+          <div className="space-y-8 p-8 rounded-2xl glass-card">
             <h3 className="font-display font-semibold text-lg text-foreground">Tus datos</h3>
 
             <div>
@@ -91,46 +93,46 @@ const CalculatorSection = () => {
           </div>
 
           {/* Results */}
-          <div className="space-y-4 p-8 rounded-2xl gold-border-glow bg-card">
+          <div className="space-y-4 p-8 rounded-2xl glass-card">
             <h3 className="font-display font-semibold text-lg text-foreground flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-primary" /> Resultados
             </h3>
 
-            <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20">
+            <motion.div whileHover={{ scale: 1.01 }} className="p-4 rounded-xl bg-destructive/10 border border-destructive/20">
               <p className="text-xs text-muted-foreground font-body flex items-center gap-1.5 uppercase tracking-wider">
                 <TrendingDown className="w-3.5 h-3.5 text-destructive" /> Ingresos perdidos / mes
               </p>
               <p className="text-2xl font-display font-bold text-destructive mt-1">
                 -<AnimatedNumber value={ingresosPerdidos} suffix="€" />
               </p>
-            </div>
+            </motion.div>
 
-            <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
+            <motion.div whileHover={{ scale: 1.01 }} className="p-4 rounded-xl bg-primary/10 border border-primary/20">
               <p className="text-xs text-muted-foreground font-body uppercase tracking-wider">Ingresos recuperados / mes</p>
               <p className="text-2xl font-display font-bold gold-gradient-text mt-1">
                 +<AnimatedNumber value={ingresosRecuperados} suffix="€" />
               </p>
-            </div>
+            </motion.div>
 
-            <div className="p-5 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/30">
+            <motion.div whileHover={{ scale: 1.01 }} className="p-5 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/30">
               <p className="text-xs text-muted-foreground font-body uppercase tracking-wider">Ingresos recuperados / año</p>
               <p className="text-3xl font-display font-bold gold-gradient-text mt-1">
                 +<AnimatedNumber value={ingresosAnuales} suffix="€" />
               </p>
-            </div>
+            </motion.div>
 
-            <div className="p-4 rounded-xl bg-card border border-border/30">
+            <motion.div whileHover={{ scale: 1.01 }} className="p-4 rounded-xl bg-secondary/30 border border-border/30">
               <p className="text-xs text-muted-foreground font-body flex items-center gap-1.5 uppercase tracking-wider">
                 <Clock className="w-3.5 h-3.5 text-primary" /> Horas ahorradas / semana
               </p>
               <p className="text-2xl font-display font-bold gold-gradient-text mt-1">
                 <AnimatedNumber value={horasAhorradas} suffix="h" />
               </p>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-14">
           <a
             href={WA_LINK}
             target="_blank"

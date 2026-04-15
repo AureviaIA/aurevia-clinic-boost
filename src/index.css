@@ -79,12 +79,38 @@
   .gold-border-glow {
     border: 1px solid hsl(51 20% 25%);
     box-shadow: 0 0 20px hsl(51 100% 50% / 0.08);
-    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
   }
 
   .gold-border-glow:hover {
     border-color: hsl(51 100% 50% / 0.5);
     box-shadow: 0 0 30px hsl(51 100% 50% / 0.15), 0 0 60px hsl(51 100% 50% / 0.05);
+  }
+
+  /* Glassmorphism card */
+  .glass-card {
+    background: hsl(0 0% 14% / 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(51 20% 25% / 0.5);
+    box-shadow: 0 8px 32px hsl(0 0% 0% / 0.3), inset 0 1px 0 hsl(0 0% 100% / 0.03);
+    transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+  }
+
+  .glass-card:hover {
+    border-color: hsl(51 100% 50% / 0.3);
+    box-shadow: 0 12px 40px hsl(0 0% 0% / 0.4), 0 0 30px hsl(51 100% 50% / 0.08), inset 0 1px 0 hsl(0 0% 100% / 0.05);
+    transform: translateY(-2px);
+  }
+
+  /* Hover lift for cards */
+  .hover-lift {
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px hsl(0 0% 0% / 0.4);
   }
 
   .section-glow {
@@ -119,4 +145,80 @@
   .chat-bubble-ia {
     @apply gold-gradient-bg text-primary-foreground rounded-br-sm;
   }
+
+  /* Phone mockup frame */
+  .phone-mockup {
+    position: relative;
+    border-radius: 2.5rem;
+    border: 3px solid hsl(0 0% 25%);
+    box-shadow:
+      0 0 0 1px hsl(0 0% 18%),
+      0 20px 60px hsl(0 0% 0% / 0.5),
+      inset 0 1px 0 hsl(0 0% 30%);
+    overflow: hidden;
+    background: hsl(0 0% 8%);
+  }
+
+  .phone-mockup::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 28px;
+    background: hsl(0 0% 8%);
+    border-radius: 0 0 1rem 1rem;
+    z-index: 10;
+  }
+
+  /* Animated gradient background */
+  .animated-gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 4%) 0%,
+      hsl(51 20% 8%) 25%,
+      hsl(0 0% 4%) 50%,
+      hsl(51 15% 6%) 75%,
+      hsl(0 0% 4%) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Activity pulse dot */
+  .activity-dot {
+    @apply w-2 h-2 rounded-full;
+    box-shadow: 0 0 6px currentColor;
+  }
+
+  /* Subtle scan line effect */
+  .scan-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(51 100% 50% / 0.15), transparent);
+    animation: scan-down 4s linear infinite;
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes scan-down {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  25% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+  50% { transform: translateY(-40px) translateX(-5px); opacity: 0.3; }
+  75% { transform: translateY(-20px) translateX(15px); opacity: 0.5; }
 }

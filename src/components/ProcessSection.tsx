@@ -24,7 +24,7 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section id="proceso" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
+    <section id="proceso" className="relative py-28 bg-[#0b0b0b] scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="container px-6">
         <motion.div
@@ -58,10 +58,13 @@ const ProcessSection = () => {
               )}
 
               <div className="relative mb-6 mx-auto">
-                <div className="w-20 h-20 rounded-2xl gold-border-glow bg-card flex items-center justify-center mx-auto group-hover:border-primary/50 transition-colors">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="w-20 h-20 rounded-2xl glass-card flex items-center justify-center mx-auto group-hover:border-primary/50 transition-colors"
+                >
                   <step.icon className="w-8 h-8 text-primary" />
-                </div>
-                <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full gold-gradient-bg flex items-center justify-center text-xs font-display font-bold text-primary-foreground">
+                </motion.div>
+                <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full gold-gradient-bg flex items-center justify-center text-xs font-display font-bold text-primary-foreground shadow-lg">
                   {step.num}
                 </span>
               </div>

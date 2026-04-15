@@ -12,7 +12,7 @@ const solutions = [
 
 const SolutionsSection = () => {
   return (
-    <section id="soluciones" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
+    <section id="soluciones" className="relative py-28 bg-[#0b0b0b] scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="container px-6">
         <motion.div
@@ -20,7 +20,7 @@ const SolutionsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
             Tu <span className="gold-gradient-text">copiloto invisible</span>
@@ -30,7 +30,7 @@ const SolutionsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {solutions.map((sol, i) => (
             <motion.div
               key={i}
@@ -38,7 +38,8 @@ const SolutionsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="rounded-xl gold-border-glow bg-card p-6 group hover:border-primary/40 transition-all"
+              whileHover={{ y: -4 }}
+              className="rounded-xl glass-card p-6 group"
             >
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 <sol.icon className="w-5 h-5 text-primary" />

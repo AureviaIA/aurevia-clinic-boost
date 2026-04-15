@@ -1,6 +1,6 @@
 import { motion, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, Users, CalendarCheck, TrendingUp, DollarSign } from "lucide-react";
+import { MessageCircle, Users, CalendarCheck, TrendingUp, DollarSign, Zap } from "lucide-react";
 
 const AnimatedCounter = ({ end, duration = 2, prefix = "", suffix = "" }: { end: number; duration?: number; prefix?: string; suffix?: string }) => {
   const spring = useSpring(0, { duration: duration * 1000, bounce: 0 });
@@ -40,28 +40,56 @@ const chatMessages = [
   { sender: "ia", text: "✅ Cita confirmada: Jueves 16:00 - Botox. Te envío confirmación por email.", delay: 7.5 },
 ];
 
+const activityFeed = [
+  "Nuevo lead desde web...",
+  "Respuesta enviada en 3s...",
+  "Lead cualificado ✓",
+  "Cita generada automáticamente...",
+  "Seguimiento programado...",
+];
+
 const LiveSystemSection = () => {
   const [visibleMessages, setVisibleMessages] = useState(0);
+  const [typingVisible, setTypingVisible] = useState(false);
+  const [currentActivity, setCurrentActivity] = useState(0);
 
   useEffect(() => {
-    const timers = chatMessages.map((msg, i) =>
-      setTimeout(() => setVisibleMessages(i + 1), msg.delay * 1000 + 1000)
-    );
+    const timers = chatMessages.map((msg, i) => {
+      // Show typing before IA messages
+      if (msg.sender === "ia") {
+        setTimeout(() => setTypingVisible(true), msg.delay * 1000 + 500);
+      }
+      return setTimeout(() => {
+        setVisibleMessages(i + 1);
+        setTypingVisible(false);
+      }, msg.delay * 1000 + 1000);
+    });
     return () => timers.forEach(clearTimeout);
   }, []);
 
+  // Cycle activity feed
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentActivity((prev) => (prev + 1) % activityFeed.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="sistema" className="relative py-24 bg-[#0b0b0b] scroll-mt-24">
+    <section id="sistema" className="relative py-28 bg-[#0b0b0b] scroll-mt-24">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      <div className="container px-6">
+      {/* Subtle ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.02] blur-[150px]" />
+      
+      <div className="container px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-6">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             <span className="text-xs font-body text-primary uppercase tracking-widest">Sistema activo en tiempo real</span>
           </div>
@@ -78,24 +106,33 @@ const LiveSystemSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-3 rounded-2xl gold-border-glow bg-card overflow-hidden"
+            className="lg:col-span-3 rounded-2xl glass-card overflow-hidden"
           >
-            <div className="px-5 py-3 border-b border-border/30 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full gold-gradient-bg flex items-center justify-center">
-                <MessageCircle className="w-4 h-4 text-primary-foreground" />
+            {/* WhatsApp-style header */}
+            <div className="px-5 py-3 border-b border-border/30 flex items-center gap-3 bg-secondary/30">
+              <div className="w-10 h-10 rounded-full gold-gradient-bg flex items-center justify-center">
+                <MessageCircle className="w-5 h-5 text-primary-foreground" />
               </div>
-              <div>
+              <div className="flex-1">
                 <p className="text-sm font-display font-semibold text-foreground">WhatsApp IA</p>
-                <p className="text-xs text-green-500 font-body">Respondiendo...</p>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  <p className="text-xs text-green-500 font-body">Respondiendo...</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1">
+                <Zap className="w-3.5 h-3.5 text-primary/50" />
+                <span className="text-[10px] text-muted-foreground/50 font-body">IA</span>
               </div>
             </div>
-            <div className="p-5 space-y-3 min-h-[360px]">
+            
+            <div className="p-5 space-y-3 min-h-[380px]">
               {chatMessages.slice(0, visibleMessages).map((msg, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
+                  initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
                   className={`flex ${msg.sender === "patient" ? "justify-end" : "justify-start"}`}
                 >
                   <div
@@ -109,6 +146,23 @@ const LiveSystemSection = () => {
                   </div>
                 </motion.div>
               ))}
+              
+              {/* Typing indicator */}
+              {typingVisible && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex justify-start"
+                >
+                  <div className="bg-secondary text-muted-foreground rounded-2xl rounded-bl-sm px-4 py-3 text-sm">
+                    <span className="inline-flex gap-1">
+                      <span className="w-2 h-2 rounded-full bg-muted-foreground/60 animate-bounce" style={{ animationDelay: "0ms" }} />
+                      <span className="w-2 h-2 rounded-full bg-muted-foreground/60 animate-bounce" style={{ animationDelay: "150ms" }} />
+                      <span className="w-2 h-2 rounded-full bg-muted-foreground/60 animate-bounce" style={{ animationDelay: "300ms" }} />
+                    </span>
+                  </div>
+                </motion.div>
+              )}
             </div>
           </motion.div>
 
@@ -125,7 +179,11 @@ const LiveSystemSection = () => {
               { icon: CalendarCheck, label: "Citas generadas", value: 312, suffix: "", color: "text-green-500" },
               { icon: TrendingUp, label: "Tasa conversión", value: 37, suffix: "%", color: "text-primary" },
             ].map((metric, i) => (
-              <div key={i} className="rounded-xl gold-border-glow bg-card p-5 flex items-center gap-4">
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.02 }}
+                className="rounded-xl glass-card p-5 flex items-center gap-4"
+              >
                 <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <metric.icon className={`w-5 h-5 ${metric.color}`} />
                 </div>
@@ -135,11 +193,12 @@ const LiveSystemSection = () => {
                     <AnimatedCounter end={metric.value} suffix={metric.suffix} />
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
 
             {/* Revenue card */}
-            <div className="rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 p-5">
+            <div className="rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 p-5 relative overflow-hidden">
+              <div className="absolute inset-0 scan-line pointer-events-none" />
               <div className="flex items-center gap-2 mb-2">
                 <DollarSign className="w-4 h-4 text-primary" />
                 <p className="text-xs text-primary font-body uppercase tracking-wider">Ingresos generados</p>
@@ -150,6 +209,23 @@ const LiveSystemSection = () => {
               <p className="text-xs text-muted-foreground font-body mt-2">
                 <span className="text-green-500">↑ +23%</span> vs mes anterior
               </p>
+            </div>
+
+            {/* Live activity ticker */}
+            <div className="rounded-xl glass-card p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="activity-dot bg-green-500 animate-pulse" />
+                <span className="text-[10px] text-muted-foreground font-body uppercase tracking-widest">Actividad en vivo</span>
+              </div>
+              <motion.p
+                key={currentActivity}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                className="text-sm text-foreground/80 font-body"
+              >
+                {activityFeed[currentActivity]}
+              </motion.p>
             </div>
           </motion.div>
         </div>
