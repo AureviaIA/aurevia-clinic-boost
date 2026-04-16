@@ -8,10 +8,10 @@ import CalculatorSection from "@/components/CalculatorSection";
 import ChatDemoSection from "@/components/ChatDemoSection";
 import DashboardSection from "@/components/DashboardSection";
 import SolutionsSection from "@/components/SolutionsSection";
+import WhatsAppAutomationSection from "@/components/WhatsAppAutomationSection";
 import WhyDifferentSection from "@/components/WhyDifferentSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
-import BonusSection from "@/components/BonusSection";
 import ContactFormSection from "@/components/ContactFormSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import FloatingChat from "@/components/FloatingChat";
@@ -29,10 +29,10 @@ const Index = () => {
       <ChatDemoSection />
       <DashboardSection />
       <SolutionsSection />
+      <WhatsAppAutomationSection />
       <WhyDifferentSection />
       <TestimonialsSection />
       <FAQSection />
-      <BonusSection />
       <ContactFormSection />
       <BenefitsSection />
       <FloatingChat />

@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight, Activity, Wifi, Shield } from "lucide-react";
 
-const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20ver%20demo";
+const WA_LINK_SISTEMA = "https://wa.me/34640624484?text=Hola%20quiero%20ver%20demo";
+const WA_LINK_WHATSAPP = "https://wa.me/34640624484?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20automatizaci%C3%B3n%20de%20WhatsApp%20para%20mi%20cl%C3%ADnica";
 
 const FloatingParticle = ({ delay, x, y, size }: { delay: number; x: string; y: string; size: number }) => (
   <motion.div
@@ -79,29 +80,27 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-12 font-body leading-relaxed">
-              Responde, cualifica y agenda automáticamente sin intervención humana
+              Automatiza tu WhatsApp, gestiona pacientes y aumenta tus citas… o implementa el sistema completo de crecimiento para tu clínica.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <a
-                href={WA_LINK}
+                href={WA_LINK_SISTEMA}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-10 py-5 rounded-xl btn-float animate-glow-pulse"
               >
-                <MessageCircle className="w-5 h-5" />
-                Ver sistema en vivo
+                <ArrowRight className="w-5 h-5" />
+                Ver sistema completo
               </a>
               <a
-                href="#sistema"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector("#sistema")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary font-body font-medium transition-colors py-5"
+                href={WA_LINK_WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 border border-primary/30 bg-primary/5 hover:bg-primary/10 text-primary font-body font-bold text-lg px-10 py-5 rounded-xl transition-all duration-300"
               >
-                Descubre cómo funciona
-                <ArrowRight className="w-4 h-4" />
+                <MessageCircle className="w-5 h-5" />
+                Automatizar mi WhatsApp
               </a>
             </div>
 
