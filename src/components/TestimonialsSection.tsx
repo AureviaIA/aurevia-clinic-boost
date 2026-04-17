@@ -12,7 +12,7 @@ import anaTorresImg from "@/assets/testimonial-ana-torres.jpg";
 import drMoralesImg from "@/assets/testimonial-dr-morales.jpg";
 import lauraSanchezImg from "@/assets/testimonial-laura-sanchez.jpg";
 
-const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20resultados%20as%C3%AD";
+const WA_LINK = "https://wa.me/34640624484?text=Hola,%20me%20gustar%C3%ADa%20agendar%20una%20llamada%20para%20ver%20c%C3%B3mo%20funcionar%C3%ADa%20esto%20en%20mi%20cl%C3%ADnica";
 
 const testimonials = [
   { quote: "El sistema nos ha generado un 40% más de citas. Ya no perdemos leads.", name: "Dr. López", clinic: "Clínica Estética Renovar", image: drLopezImg },

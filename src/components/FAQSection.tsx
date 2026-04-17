@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MessageCircle } from "lucide-react";
+
+const WA_LINK = "https://wa.me/34640624484?text=Hola,%20tengo%20algunas%20preguntas%20sobre%20el%20sistema%20y%20me%20gustar%C3%ADa%20hablar%20con%20alguien%20para%20resolverlas";
 
 const faqs = [
   { q: "¿Cuánto tiempo tarda la implementación?", a: "Menos de 72 horas. Nos encargamos de todo el proceso técnico." },
