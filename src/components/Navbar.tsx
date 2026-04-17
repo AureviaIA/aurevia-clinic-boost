@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import aureviaLogo from "@/assets/aurevia-logo.png";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20agendar%20demo";
 
@@ -51,6 +52,7 @@ const Navbar = () => {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => openWhatsApp(e, WA_LINK)}
             className="text-sm font-body font-medium px-5 py-2 rounded-lg gold-gradient-bg text-primary-foreground btn-float shrink-0"
           >
             Ver demo

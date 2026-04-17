@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send } from "lucide-react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20mejorar%20la%20captaci%C3%B3n%20de%20pacientes%20en%20mi%20cl%C3%ADnica";
 
@@ -468,6 +469,7 @@ const FloatingChat = () => {
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => openWhatsApp(e, WA_LINK)}
               className="mx-4 mb-2 text-center text-xs font-body text-primary hover:underline"
             >
               💬 Prefieres hablar por WhatsApp? Haz clic aquí

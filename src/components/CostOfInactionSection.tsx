@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TrendingDown, MessageCircle } from "lucide-react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%2C%20quiero%20dejar%20de%20perder%20ingresos%20en%20mi%20cl%C3%ADnica";
 
@@ -103,6 +104,7 @@ const CostOfInactionSection = () => {
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => openWhatsApp(e, WA_LINK)}
               className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
             >
               <MessageCircle className="w-5 h-5" />

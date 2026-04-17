@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Zap } from "lucide-react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola,%20quiero%20implementar%20un%20sistema%20completo%20para%20captar%20m%C3%A1s%20pacientes%20y%20mejorar%20la%20conversi%C3%B3n%20en%20mi%20cl%C3%ADnica";
 
@@ -44,6 +45,7 @@ const ContactFormSection = () => {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => openWhatsApp(e, WA_LINK)}
             className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-xl px-12 py-6 rounded-xl btn-float animate-glow-pulse"
           >
             <MessageCircle className="w-6 h-6" />

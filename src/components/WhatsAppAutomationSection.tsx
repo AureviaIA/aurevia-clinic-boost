@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { MessageCircle, Clock, CalendarX, UserX, PhoneOff, Zap, CalendarCheck, ShieldCheck, TrendingUp, ArrowRight } from "lucide-react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola,%20quiero%20automatizar%20el%20WhatsApp%20de%20mi%20cl%C3%ADnica%20porque%20siento%20que%20estoy%20perdiendo%20pacientes%20por%20no%20responder%20a%20tiempo";
 
@@ -251,6 +252,7 @@ const WhatsAppAutomationSection = () => {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => openWhatsApp(e, WA_LINK)}
                 className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-8 py-4 rounded-xl btn-float animate-glow-pulse"
               >
                 <MessageCircle className="w-5 h-5" />

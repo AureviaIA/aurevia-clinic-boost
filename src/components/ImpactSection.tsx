@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20aumentar%20mis%20pacientes";
 
@@ -66,6 +67,7 @@ const ImpactSection = () => {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => openWhatsApp(e, WA_LINK)}
             className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-10 py-5 rounded-xl btn-float animate-glow-pulse"
           >
             <MessageCircle className="w-5 h-5" />

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { BookOpen, BarChart3 } from "lucide-react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20obtener%20mis%20bonos";
 
@@ -49,7 +50,7 @@ const BonusSection = () => {
         </div>
 
         <div className="text-center">
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float animate-glow-pulse">
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" onClick={(e) => openWhatsApp(e, WA_LINK)} className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float animate-glow-pulse">
             Obtener mis bonos ahora
           </a>
         </div>
