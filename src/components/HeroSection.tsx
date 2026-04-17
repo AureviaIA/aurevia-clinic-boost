@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight, Activity, Wifi, Shield } from "lucide-react";
 
-const WA_LINK_SISTEMA = "https://wa.me/34640624484?text=Hola%20quiero%20ver%20demo";
-const WA_LINK_WHATSAPP = "https://wa.me/34640624484?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20automatizaci%C3%B3n%20de%20WhatsApp%20para%20mi%20cl%C3%ADnica";
+const WA_LINK_SISTEMA = "https://wa.me/34640624484?text=Hola,%20acabo%20de%20ver%20vuestra%20web%20y%20me%20interesa%20saber%20c%C3%B3mo%20podr%C3%ADa%20conseguir%20m%C3%A1s%20pacientes%20para%20mi%20cl%C3%ADnica";
+const WA_LINK_WHATSAPP = "https://wa.me/34640624484?text=Hola,%20quiero%20automatizar%20el%20WhatsApp%20de%20mi%20cl%C3%ADnica%20porque%20siento%20que%20estoy%20perdiendo%20pacientes%20por%20no%20responder%20a%20tiempo";
 
 const FloatingParticle = ({ delay, x, y, size }: { delay: number; x: string; y: string; size: number }) => (
   <motion.div

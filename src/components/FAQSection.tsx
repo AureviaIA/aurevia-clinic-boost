@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MessageCircle } from "lucide-react";
+
+const WA_LINK = "https://wa.me/34640624484?text=Hola,%20tengo%20algunas%20preguntas%20sobre%20el%20sistema%20y%20me%20gustar%C3%ADa%20hablar%20con%20alguien%20para%20resolverlas";
 
 const faqs = [
   { q: "¿Cuánto tiempo tarda la implementación?", a: "Menos de 72 horas. Nos encargamos de todo el proceso técnico." },
@@ -50,6 +52,26 @@ const FAQSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-muted-foreground font-body mb-6">¿Tienes más preguntas? Hablemos directamente</p>
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
+          >
+            <MessageCircle className="w-5 h-5" />
+            Hablar por WhatsApp
+          </a>
+        </motion.div>
       </div>
     </section>
   );

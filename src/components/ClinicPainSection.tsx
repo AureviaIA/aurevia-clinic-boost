@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { MessageCircleOff, Clock, CalendarX, UserX, Zap } from "lucide-react";
+import { MessageCircleOff, Clock, CalendarX, UserX, Zap, MessageCircle } from "lucide-react";
+
+const WA_LINK = "https://wa.me/34640624484?text=Hola,%20creo%20que%20estoy%20perdiendo%20pacientes%20en%20mi%20cl%C3%ADnica%20por%20la%20gesti%C3%B3n%20de%20mensajes%20y%20me%20gustar%C3%ADa%20solucionarlo";
 
 const pains = [
   { icon: MessageCircleOff, text: "Pacientes que escriben y nunca reciben respuesta", stat: "68%" , label: "sin respuesta en <1h" },
@@ -58,6 +60,24 @@ const ClinicPainSection = () => (
           </motion.div>
         ))}
       </div>
+
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mt-16 text-center"
+      >
+        <a
+          href={WA_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-10 py-5 rounded-xl btn-float animate-glow-pulse"
+        >
+          <MessageCircle className="w-5 h-5" />
+          Quiero solucionar esto ahora
+        </a>
+      </motion.div>
     </div>
   </section>
 );
