@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { MessageCircle, Clock, CalendarX, UserX, PhoneOff, Zap, CalendarCheck, ShieldCheck, TrendingUp, ArrowRight } from "lucide-react";
 
-const WA_LINK = "https://wa.me/34640624484?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20automatizaci%C3%B3n%20de%20WhatsApp%20para%20mi%20cl%C3%ADnica";
+const WA_LINK = "https://wa.me/34640624484?text=Hola,%20quiero%20automatizar%20el%20WhatsApp%20de%20mi%20cl%C3%ADnica%20porque%20siento%20que%20estoy%20perdiendo%20pacientes%20por%20no%20responder%20a%20tiempo";
 
 const chatMessages = [
   { from: "patient", text: "Hola, me gustaría pedir cita para una limpieza dental", delay: 0 },
