@@ -73,6 +73,7 @@ const ClinicPainSection = () => (
           href={WA_LINK}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => openWhatsApp(e, WA_LINK)}
           className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-10 py-5 rounded-xl btn-float animate-glow-pulse"
         >
           <MessageCircle className="w-5 h-5" />
