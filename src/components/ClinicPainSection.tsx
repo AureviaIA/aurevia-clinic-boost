@@ -60,6 +60,24 @@ const ClinicPainSection = () => (
           </motion.div>
         ))}
       </div>
+
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mt-16 text-center"
+      >
+        <a
+          href={WA_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-10 py-5 rounded-xl btn-float animate-glow-pulse"
+        >
+          <MessageCircle className="w-5 h-5" />
+          Quiero solucionar esto ahora
+        </a>
+      </motion.div>
     </div>
   </section>
 );
