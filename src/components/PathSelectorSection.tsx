@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Rocket } from "lucide-react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_QUICK = "https://wa.me/34640624484?text=Hola%2C%20quiero%20dejar%20de%20perder%20citas%20en%20mi%20cl%C3%ADnica";
 const WA_FULL = "https://wa.me/34640624484?text=Hola%2C%20quiero%20el%20sistema%20completo%20para%20escalar%20mi%20cl%C3%ADnica";
@@ -54,6 +55,7 @@ const PathSelectorSection = () => (
             href={p.link}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => openWhatsApp(e, p.link)}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

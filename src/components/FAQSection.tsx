@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown, MessageCircle } from "lucide-react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola,%20tengo%20algunas%20preguntas%20sobre%20el%20sistema%20y%20me%20gustar%C3%ADa%20hablar%20con%20alguien%20para%20resolverlas";
 
@@ -66,6 +67,7 @@ const FAQSection = () => {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => openWhatsApp(e, WA_LINK)}
             className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
           >
             <MessageCircle className="w-5 h-5" />
