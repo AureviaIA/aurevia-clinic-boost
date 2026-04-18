@@ -98,10 +98,10 @@ const CostOfInactionSection = () => {
             className="text-center"
           >
             <a
-              href={WA_LINK}
+              href={buildSimulatorWaLink(sim)}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => openWhatsApp(e, WA_LINK)}
+              onClick={(e) => openWhatsApp(e, buildSimulatorWaLink(sim))}
               className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float"
             >
               <MessageCircle className="w-5 h-5" />
