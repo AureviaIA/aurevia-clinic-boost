@@ -1,8 +1,9 @@
 import { motion, useSpring, useTransform } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { TrendingUp, TrendingDown, Clock, BarChart3 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { openWhatsApp } from "@/lib/whatsapp";
+import { useSimulator, setSimulator, computeSimulator } from "@/lib/simulatorStore";
 
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20recuperar%20mis%20ingresos";
 
@@ -24,16 +25,19 @@ const AnimatedNumber = ({ value, duration = 0.6, prefix = "", suffix = "" }: { v
 };
 
 const CalculatorSection = () => {
-  const [leads, setLeads] = useState(100);
-  const [noShowRate, setNoShowRate] = useState(30);
-  const [avgTicket, setAvgTicket] = useState(200);
+  const sim = useSimulator();
+  const { leads, noShowRate, avgTicket } = sim;
+  const setLeads = (v: number) => setSimulator({ leads: v });
+  const setNoShowRate = (v: number) => setSimulator({ noShowRate: v });
+  const setAvgTicket = (v: number) => setSimulator({ avgTicket: v });
 
-  const leadsPerdidos = Math.round(leads * (noShowRate / 100));
-  const leadsRecuperados = Math.round(leadsPerdidos * 0.7);
-  const ingresosPerdidos = leadsPerdidos * avgTicket;
-  const ingresosRecuperados = leadsRecuperados * avgTicket;
-  const ingresosAnuales = ingresosRecuperados * 12;
-  const horasAhorradas = Math.round(leads * 0.1);
+  const {
+    ingresosPerdidos,
+    ingresosRecuperados,
+    ingresosRecuperadosAnual: ingresosAnuales,
+    horasAhorradasSemana,
+  } = computeSimulator(sim);
+  const horasAhorradas = Math.round(horasAhorradasSemana);
 
   return (
     <section id="calculadora" className="relative py-28 bg-[#0b0b0b] scroll-mt-24">
