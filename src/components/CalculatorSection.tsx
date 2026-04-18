@@ -3,9 +3,7 @@ import { useEffect, useRef } from "react";
 import { TrendingUp, TrendingDown, Clock, BarChart3 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { openWhatsApp } from "@/lib/whatsapp";
-import { useSimulator, setSimulator, computeSimulator } from "@/lib/simulatorStore";
-
-const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20recuperar%20mis%20ingresos";
+import { useSimulator, setSimulator, computeSimulator, buildSimulatorWaLink } from "@/lib/simulatorStore";
 
 const AnimatedNumber = ({ value, duration = 0.6, prefix = "", suffix = "" }: { value: number; duration?: number; prefix?: string; suffix?: string }) => {
   const spring = useSpring(0, { duration: duration * 1000, bounce: 0 });
@@ -139,10 +137,10 @@ const CalculatorSection = () => {
 
         <div className="text-center mt-14">
           <a
-            href={WA_LINK}
+            href={buildSimulatorWaLink(sim)}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => openWhatsApp(e, WA_LINK)}
+            onClick={(e) => openWhatsApp(e, buildSimulatorWaLink(sim))}
             className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float text-lg"
           >
             Ver cómo recuperarlo
