@@ -3,9 +3,7 @@ import { useEffect, useRef } from "react";
 import { TrendingUp, TrendingDown, Clock, BarChart3 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { openWhatsApp } from "@/lib/whatsapp";
-import { useSimulator, setSimulator, computeSimulator } from "@/lib/simulatorStore";
-
-const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20recuperar%20mis%20ingresos";
+import { useSimulator, setSimulator, computeSimulator, buildSimulatorWaLink } from "@/lib/simulatorStore";
 
 const AnimatedNumber = ({ value, duration = 0.6, prefix = "", suffix = "" }: { value: number; duration?: number; prefix?: string; suffix?: string }) => {
   const spring = useSpring(0, { duration: duration * 1000, bounce: 0 });
