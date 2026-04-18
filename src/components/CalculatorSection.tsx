@@ -137,10 +137,10 @@ const CalculatorSection = () => {
 
         <div className="text-center mt-14">
           <a
-            href={WA_LINK}
+            href={buildSimulatorWaLink(sim)}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => openWhatsApp(e, WA_LINK)}
+            onClick={(e) => openWhatsApp(e, buildSimulatorWaLink(sim))}
             className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float text-lg"
           >
             Ver cómo recuperarlo
