@@ -33,6 +33,20 @@ export const setSimulator = (patch: Partial<SimulatorState>) => {
 export const useSimulator = () => useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 
 // Derived calculations — single shared formula
+// Builds a personalized WhatsApp message using current simulator data.
+// Falls back to a generic message if data is missing/invalid.
+export const buildSimulatorWaMessage = (s: SimulatorState = state): string => {
+  const { ingresosPerdidos } = computeSimulator(s);
+  if (!ingresosPerdidos || !isFinite(ingresosPerdidos) || ingresosPerdidos <= 0) {
+    return "Hola, me gustaría ver cómo solucionar la gestión de leads en mi clínica.";
+  }
+  const formatted = Math.round(ingresosPerdidos).toLocaleString("es-ES");
+  return `Hola, he estado usando la calculadora y creo que puedo estar perdiendo aproximadamente ${formatted}€ al mes por no gestionar bien los leads. Me gustaría ver cómo solucionarlo en mi clínica.`;
+};
+
+export const buildSimulatorWaLink = (s: SimulatorState = state): string =>
+  `https://wa.me/34640624484?text=${encodeURIComponent(buildSimulatorWaMessage(s))}`;
+
 export const computeSimulator = (s: SimulatorState) => {
   const leadsPerdidos = s.leads * (s.noShowRate / 100);
   const ingresosPerdidos = leadsPerdidos * s.avgTicket;
