@@ -2,9 +2,7 @@ import { motion, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { TrendingDown, MessageCircle } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
-import { useSimulator, computeSimulator } from "@/lib/simulatorStore";
-
-const WA_LINK = "https://wa.me/34640624484?text=Hola%2C%20quiero%20dejar%20de%20perder%20ingresos%20en%20mi%20cl%C3%ADnica";
+import { useSimulator, computeSimulator, buildSimulatorWaLink } from "@/lib/simulatorStore";
 
 const AnimatedNumber = ({ value }: { value: number }) => {
   const spring = useSpring(0, { duration: 800, bounce: 0 });
