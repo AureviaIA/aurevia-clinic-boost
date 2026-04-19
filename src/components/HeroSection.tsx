@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Activity, Wifi, Shield } from "lucide-react";
+import { MessageCircle, ArrowRight, Activity, Wifi, Shield, Check } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
+import aureviaLogo from "@/assets/aurevia-logo.png";
 
-const WA_LINK_SISTEMA = "https://wa.me/34640624484?text=Hola,%20acabo%20de%20ver%20vuestra%20web%20y%20me%20interesa%20saber%20c%C3%B3mo%20podr%C3%ADa%20conseguir%20m%C3%A1s%20pacientes%20para%20mi%20cl%C3%ADnica";
-const WA_LINK_WHATSAPP = "https://wa.me/34640624484?text=Hola,%20quiero%20automatizar%20el%20WhatsApp%20de%20mi%20cl%C3%ADnica%20porque%20siento%20que%20estoy%20perdiendo%20pacientes%20por%20no%20responder%20a%20tiempo";
+const WA_LINK_DIAGNOSTICO = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver un diagnóstico de mi clínica");
+const WA_LINK_COMO_FUNCIONA = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo funcionaría el sistema en mi clínica");
 
 const FloatingParticle = ({ delay, x, y, size }: { delay: number; x: string; y: string; size: number }) => (
   <motion.div
@@ -54,16 +55,17 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-10">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-body text-primary tracking-wide">Sistema activo 24/7</span>
+            {/* Logo + Badge */}
+            <div className="flex items-center gap-3 mb-8">
+              <img src={aureviaLogo} alt="Aurevia" className="h-9 w-auto" />
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-xs font-body text-primary tracking-wide">PatientFlow 24/7™ activo</span>
+              </div>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-[1.1] mb-8">
-              <span className="text-foreground">Sistema de IA que convierte</span>
-              <br />
-              <span className="text-foreground">tu web en una </span>
+              <span className="text-foreground">Tu clínica no necesita más visitas. Necesita </span>
               <motion.span
                 className="gold-gradient-text inline-block"
                 style={{ textShadow: "0 0 30px hsl(51 100% 50% / 0.4)" }}
@@ -76,36 +78,56 @@ const HeroSection = () => {
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                máquina de pacientes
+                convertirlas en pacientes
               </motion.span>
+              <span className="text-foreground">.</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-12 font-body leading-relaxed">
-              Automatiza tu WhatsApp, gestiona pacientes y aumenta tus citas… o implementa el sistema completo de crecimiento para tu clínica.
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-8 font-body leading-relaxed">
+              El <span className="text-primary font-semibold">Sistema PatientFlow 24/7™</span> de Aurevia convierte cada mensaje en una cita real en segundos, incluso cuando tu clínica está cerrada.
             </p>
+
+            <ul className="space-y-2.5 mb-10 font-body">
+              {[
+                "Web optimizada para captar pacientes",
+                "IA responde en menos de 5 segundos",
+                "Sistema automático de citas 24/7",
+              ].map((b) => (
+                <li key={b} className="flex items-center gap-3 text-foreground/90">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary/15 border border-primary/30">
+                    <Check className="w-3 h-3 text-primary" />
+                  </span>
+                  {b}
+                </li>
+              ))}
+            </ul>
 
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <a
-                href={WA_LINK_SISTEMA}
+                href={WA_LINK_DIAGNOSTICO}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => openWhatsApp(e, WA_LINK_SISTEMA)}
+                onClick={(e) => openWhatsApp(e, WA_LINK_DIAGNOSTICO)}
                 className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-10 py-5 rounded-xl btn-float animate-glow-pulse"
               >
                 <ArrowRight className="w-5 h-5" />
-                Ver sistema completo
+                Ver diagnóstico de mi clínica
               </a>
               <a
-                href={WA_LINK_WHATSAPP}
+                href={WA_LINK_COMO_FUNCIONA}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => openWhatsApp(e, WA_LINK_WHATSAPP)}
+                onClick={(e) => openWhatsApp(e, WA_LINK_COMO_FUNCIONA)}
                 className="inline-flex items-center gap-3 border border-primary/30 bg-primary/5 hover:bg-primary/10 text-primary font-body font-bold text-lg px-10 py-5 rounded-xl transition-all duration-300"
               >
                 <MessageCircle className="w-5 h-5" />
-                Automatizar mi WhatsApp
+                Ver cómo funciona
               </a>
             </div>
+
+            <p className="mt-6 text-sm text-muted-foreground font-body">
+              ✔ Implementación en 72h &nbsp;·&nbsp; ✔ Sin conocimientos técnicos &nbsp;·&nbsp; ✔ Activo desde el día 1
+            </p>
 
             {/* Stats bar */}
             <motion.div
