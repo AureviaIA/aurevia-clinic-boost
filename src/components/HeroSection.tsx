@@ -3,8 +3,8 @@ import { MessageCircle, ArrowRight, Activity, Wifi, Shield, Check } from "lucide
 import { openWhatsApp } from "@/lib/whatsapp";
 import aureviaLogo from "@/assets/aurevia-logo.png";
 
-const WA_LINK_DIAGNOSTICO = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver un diagnóstico de mi clínica");
-const WA_LINK_COMO_FUNCIONA = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo funcionaría el sistema en mi clínica");
+const WA_LINK_DIAGNOSTICO = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo convertir más pacientes en mi clínica");
+const WA_LINK_COMO_FUNCIONA = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo funciona el sistema en mi clínica");
 
 const FloatingParticle = ({ delay, x, y, size }: { delay: number; x: string; y: string; size: number }) => (
   <motion.div
@@ -84,14 +84,14 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-8 font-body leading-relaxed">
-              El <span className="text-primary font-semibold">Sistema PatientFlow 24/7™</span> de Aurevia convierte cada mensaje en una cita real en segundos, incluso cuando tu clínica está cerrada.
+              El sistema de <span className="text-primary font-semibold">Aurevia</span> ayuda a clínicas privadas de salud, estética y bienestar a responder en segundos, captar más pacientes y no perder oportunidades por falta de seguimiento.
             </p>
 
             <ul className="space-y-2.5 mb-10 font-body">
               {[
-                "Web optimizada para captar pacientes",
-                "IA responde en menos de 5 segundos",
-                "Sistema automático de citas 24/7",
+                "Responde a pacientes en menos de 5 segundos",
+                "Automatiza citas y seguimiento 24/7",
+                "Convierte mensajes en pacientes reales",
               ].map((b) => (
                 <li key={b} className="flex items-center gap-3 text-foreground/90">
                   <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary/15 border border-primary/30">
@@ -111,7 +111,7 @@ const HeroSection = () => {
                 className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-10 py-5 rounded-xl btn-float animate-glow-pulse"
               >
                 <ArrowRight className="w-5 h-5" />
-                Ver diagnóstico de mi clínica
+                Ver cómo convertir más pacientes
               </a>
               <a
                 href={WA_LINK_COMO_FUNCIONA}
@@ -121,12 +121,12 @@ const HeroSection = () => {
                 className="inline-flex items-center gap-3 border border-primary/30 bg-primary/5 hover:bg-primary/10 text-primary font-body font-bold text-lg px-10 py-5 rounded-xl transition-all duration-300"
               >
                 <MessageCircle className="w-5 h-5" />
-                Ver cómo funciona
+                Ver cómo funciona el sistema
               </a>
             </div>
 
             <p className="mt-6 text-sm text-muted-foreground font-body">
-              ✔ Implementación en 72h &nbsp;·&nbsp; ✔ Sin conocimientos técnicos &nbsp;·&nbsp; ✔ Activo desde el día 1
+              ✔ Implementación en 72h &nbsp;·&nbsp; ✔ Sin conocimientos técnicos &nbsp;·&nbsp; ✔ Diseñado para clínicas privadas de salud, estética y bienestar
             </p>
 
             {/* Stats bar */}

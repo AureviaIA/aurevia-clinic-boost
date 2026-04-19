@@ -11,16 +11,16 @@ const BrandTaglineFooter = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-xl sm:text-2xl font-display font-bold text-foreground mb-2">
-            Aurevia no ayuda a conseguir más leads.
+            Sistema inteligente para clínicas privadas
           </p>
           <p className="text-xl sm:text-2xl font-display font-bold gold-gradient-text mb-8">
-            Ayuda a no perder los que ya tienes.
+            de salud, estética y bienestar.
           </p>
           <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-primary/40 to-transparent mb-6" />
-          <p className="text-sm font-body text-muted-foreground">
-            Aurevia · Sistema PatientFlow 24/7™ · Automatización inteligente para clínicas
+          <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto">
+            Aurevia ayuda a convertir más consultas en pacientes reales mediante sistemas de automatización y atención instantánea.
           </p>
-          <p className="text-xs font-body text-muted-foreground/60 mt-2">© 2026 Aurevia</p>
+          <p className="text-xs font-body text-muted-foreground/60 mt-4">© 2026 Aurevia</p>
         </motion.div>
       </div>
     </footer>
