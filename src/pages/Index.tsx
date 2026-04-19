@@ -19,6 +19,8 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactFormSection from "@/components/ContactFormSection";
 import BenefitsSection from "@/components/BenefitsSection";
+import PacksSection from "@/components/PacksSection";
+import FinalCTASection from "@/components/FinalCTASection";
 import FloatingChat from "@/components/FloatingChat";
 
 const Index = () => {
@@ -42,8 +44,10 @@ const Index = () => {
       <SecuritySection />
       <WhyDifferentSection />
       <TestimonialsSection />
+      <PacksSection />
       <FAQSection />
       <ContactFormSection />
+      <FinalCTASection />
       <BenefitsSection />
       <FloatingChat />
     </div>
