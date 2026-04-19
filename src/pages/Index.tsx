@@ -44,8 +44,10 @@ const Index = () => {
       <SecuritySection />
       <WhyDifferentSection />
       <TestimonialsSection />
+      <PacksSection />
       <FAQSection />
       <ContactFormSection />
+      <FinalCTASection />
       <BenefitsSection />
       <FloatingChat />
     </div>
