@@ -31,8 +31,8 @@ const FinalCTASection = () => {
           transition={{ duration: 0.7 }}
           className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mb-6"
         >
-          <span className="text-foreground">Cada día que pasa estás perdiendo pacientes que </span>
-          <span className="gold-gradient-text">ya buscan tu tratamiento</span>
+          <span className="text-foreground">Cada paciente que no respondes en segundos </span>
+          <span className="gold-gradient-text">ya está en otra clínica</span>
           <span className="text-foreground">.</span>
         </motion.h2>
 
@@ -43,7 +43,7 @@ const FinalCTASection = () => {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="text-lg sm:text-xl text-muted-foreground font-body mb-10 max-w-2xl mx-auto"
         >
-          Aurevia convierte esas oportunidades en citas reales mediante el Sistema PatientFlow 24/7™.
+          No es falta de pacientes. Es falta de <span className="text-primary font-semibold">velocidad</span>.
         </motion.p>
 
         <motion.div
@@ -55,11 +55,11 @@ const FinalCTASection = () => {
         >
           <div className="rounded-xl border border-border/40 bg-secondary/30 p-5 text-left">
             <p className="text-xs font-body text-muted-foreground uppercase tracking-wider mb-2">Opción 1</p>
-            <p className="font-body text-foreground/80">Seguir perdiendo pacientes cada día.</p>
+            <p className="font-body text-foreground/80">Seguir perdiendo oportunidades cada día.</p>
           </div>
           <div className="rounded-xl border border-primary/40 bg-primary/[0.06] p-5 text-left">
             <p className="text-xs font-body text-primary uppercase tracking-wider mb-2">Opción 2</p>
-            <p className="font-body text-foreground">Activar un sistema que los convierte automáticamente.</p>
+            <p className="font-body text-foreground">Activar un sistema que convierte automáticamente cada mensaje en una cita.</p>
           </div>
         </motion.div>
 

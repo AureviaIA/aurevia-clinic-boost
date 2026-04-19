@@ -21,6 +21,12 @@ import ContactFormSection from "@/components/ContactFormSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import PacksSection from "@/components/PacksSection";
 import FinalCTASection from "@/components/FinalCTASection";
+import RealtimeDecisionSection from "@/components/RealtimeDecisionSection";
+import ContrastMicroSection from "@/components/ContrastMicroSection";
+import DiagnosticBridgeSection from "@/components/DiagnosticBridgeSection";
+import CostOfWaitingSection from "@/components/CostOfWaitingSection";
+import PackAnchorSection from "@/components/PackAnchorSection";
+import BrandTaglineFooter from "@/components/BrandTaglineFooter";
 import FloatingChat from "@/components/FloatingChat";
 
 const Index = () => {
@@ -36,19 +42,25 @@ const Index = () => {
       <ProcessSection />
       <CalculatorSection />
       <CostOfInactionSection />
+      <RealtimeDecisionSection />
       <ChatDemoSection />
       <DashboardSection />
       <SolutionsSection />
+      <ContrastMicroSection />
       <PathSelectorSection />
+      <DiagnosticBridgeSection />
       <WhatsAppAutomationSection />
       <SecuritySection />
       <WhyDifferentSection />
       <TestimonialsSection />
       <PacksSection />
+      <PackAnchorSection />
       <FAQSection />
       <ContactFormSection />
+      <CostOfWaitingSection />
       <FinalCTASection />
       <BenefitsSection />
+      <BrandTaglineFooter />
       <FloatingChat />
     </div>
   );
