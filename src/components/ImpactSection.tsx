@@ -55,7 +55,11 @@ const ImpactSection = () => {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => openWhatsApp(e, WA_LINK)}
+            onClick={(e) => openWhatsApp(e, WA_LINK, {
+              section: "impact",
+              button: "Quiero esto en mi clínica",
+              message: "Hola, quiero esto en mi clínica",
+            })}
             className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 rounded-xl btn-float animate-glow-pulse"
           >
             Quiero esto en mi clínica

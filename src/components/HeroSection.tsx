@@ -108,7 +108,11 @@ const HeroSection = () => {
                 href={WA_LINK_DIAGNOSTICO}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => openWhatsApp(e, WA_LINK_DIAGNOSTICO)}
+                onClick={(e) => openWhatsApp(e, WA_LINK_DIAGNOSTICO, {
+                  section: "hero",
+                  button: "Ver cómo convertir más pacientes",
+                  message: "Hola, quiero ver cómo convertir más pacientes en mi clínica",
+                })}
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-base sm:text-lg px-6 sm:px-10 py-5 rounded-xl btn-float animate-glow-pulse text-center"
               >
                 <ArrowRight className="w-5 h-5 shrink-0" />
@@ -118,7 +122,11 @@ const HeroSection = () => {
                 href={WA_LINK_COMO_FUNCIONA}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => openWhatsApp(e, WA_LINK_COMO_FUNCIONA)}
+                onClick={(e) => openWhatsApp(e, WA_LINK_COMO_FUNCIONA, {
+                  section: "hero",
+                  button: "Ver cómo funciona el sistema",
+                  message: "Hola, quiero ver cómo funciona el sistema en mi clínica",
+                })}
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-3 border border-primary/30 bg-primary/5 hover:bg-primary/10 text-primary font-body font-bold text-base sm:text-lg px-6 sm:px-10 py-5 rounded-xl transition-all duration-300 text-center"
               >
                 <MessageCircle className="w-5 h-5 shrink-0" />

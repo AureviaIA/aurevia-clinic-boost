@@ -137,7 +137,11 @@ const PacksSection = () => {
                 href={enc(p.waMsg)}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => openWhatsApp(e, enc(p.waMsg))}
+                onClick={(e) => openWhatsApp(e, enc(p.waMsg), {
+                  section: `packs_${p.name.toLowerCase()}`,
+                  button: p.cta,
+                  message: p.waMsg,
+                })}
                 className={`inline-flex items-center justify-center gap-2 font-body font-bold text-base px-6 py-4 rounded-xl transition-all ${
                   p.highlight
                     ? "gold-gradient-bg text-primary-foreground btn-float"

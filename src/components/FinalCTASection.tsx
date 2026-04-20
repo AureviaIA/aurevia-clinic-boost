@@ -73,7 +73,11 @@ const FinalCTASection = () => {
             href={WA_FINAL}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => openWhatsApp(e, WA_FINAL)}
+            onClick={(e) => openWhatsApp(e, WA_FINAL, {
+              section: "final_cta",
+              button: "Activar sistema en mi clínica",
+              message: "Hola, quiero activar PatientFlow 24/7™ en mi clínica",
+            })}
             className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-base sm:text-lg px-8 sm:px-12 py-5 sm:py-6 rounded-xl btn-float animate-glow-pulse"
           >
             Activar sistema en mi clínica

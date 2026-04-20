@@ -71,7 +71,11 @@ const BrandTaglineFooter = () => {
             href={WA_LINK_ACTIVAR}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => openWhatsApp(e, WA_LINK_ACTIVAR)}
+            onClick={(e) => openWhatsApp(e, WA_LINK_ACTIVAR, {
+              section: "footer",
+              button: "Activar sistema en mi clínica",
+              message: "Quiero información sobre cómo empezar con PatientFlow 24/7™",
+            })}
             className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-base sm:text-lg px-8 py-4 rounded-xl btn-float animate-glow-pulse"
           >
             Activar sistema en mi clínica
