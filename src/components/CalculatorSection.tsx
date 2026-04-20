@@ -60,6 +60,9 @@ const CalculatorSection = () => {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body">
             Mueve los sliders y descubre cuánto puedes recuperar.
           </p>
+          <p className="text-xs text-primary/70 font-body uppercase tracking-widest mt-3">
+            Resultados estimados usando PatientFlow 24/7™
+          </p>
         </motion.div>
 
         <motion.div
