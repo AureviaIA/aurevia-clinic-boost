@@ -146,7 +146,7 @@ const CalculatorSection = () => {
             onClick={(e) => openWhatsApp(e, buildSimulatorWaLink(sim))}
             className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float text-lg"
           >
-            Ver cómo recuperarlo
+            Ver cómo recuperar estos ingresos
           </a>
         </div>
       </div>

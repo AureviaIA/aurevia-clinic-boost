@@ -6,12 +6,12 @@ import { openWhatsApp } from "@/lib/whatsapp";
 const WA_LINK = "https://wa.me/34640624484?text=Hola,%20tengo%20algunas%20preguntas%20sobre%20el%20sistema%20y%20me%20gustar%C3%ADa%20hablar%20con%20alguien%20para%20resolverlas";
 
 const faqs = [
-  { q: "¿Cuánto tiempo tarda la implementación?", a: "Menos de 72 horas. Nos encargamos de todo el proceso técnico." },
-  { q: "¿Necesito conocimientos técnicos?", a: "No. El sistema está diseñado para que cualquier equipo lo use sin formación técnica." },
-  { q: "¿Funciona con mi sistema de gestión actual?", a: "Sí, se integra con los principales sistemas de gestión de clínicas y CRMs." },
-  { q: "¿Qué resultados puedo esperar?", a: "La mayoría ven resultados en las primeras 4-6 semanas: más leads convertidos, menos no-shows y ahorro de tiempo." },
-  { q: "¿Cuál es el coste?", a: "Planes adaptados al tamaño de tu clínica. Agenda una consultoría gratuita para propuesta personalizada." },
-  { q: "¿Mis datos están seguros?", a: "Cumplimos con RGPD y utilizamos cifrado de nivel bancario para toda la información." },
+  { q: "¿Funciona con mi sistema actual?", a: "Sí. PatientFlow 24/7™ se integra con la mayoría de sistemas de gestión de clínicas y CRMs del mercado." },
+  { q: "¿Necesito conocimientos técnicos?", a: "No. Lo configuramos todo nosotros — tu equipo solo recibe los pacientes ya cualificados." },
+  { q: "¿Cuánto tarda la implementación?", a: "En menos de 72 horas el sistema está activo y respondiendo." },
+  { q: "¿Es difícil de usar?", a: "No. Funciona en automático: el sistema responde, cualifica y agenda sin intervención manual." },
+  { q: "¿Qué resultados puedo esperar?", a: "La mayoría ven resultados en las primeras 4-6 semanas: más citas, menos no-shows y horas de trabajo recuperadas." },
+  { q: "¿Mis datos están seguros?", a: "Cumplimos con RGPD y utilizamos cifrado de nivel bancario en toda la información." },
 ];
 
 const FAQSection = () => {
@@ -26,11 +26,27 @@ const FAQSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
-            Preguntas <span className="gold-gradient-text">frecuentes</span>
+            Resolvemos tus <span className="gold-gradient-text">objeciones</span>
           </h2>
+          <p className="text-muted-foreground font-body max-w-xl mx-auto">
+            Las dudas más comunes antes de activar PatientFlow 24/7™.
+          </p>
+        </motion.div>
+
+        {/* Urgencia */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-2xl mx-auto mb-10 rounded-xl border border-primary/30 bg-primary/[0.05] px-5 py-4 text-center"
+        >
+          <p className="text-sm sm:text-base font-body text-foreground/90">
+            🚨 <span className="text-primary font-semibold">Solo trabajamos con un número limitado de clínicas al mes</span> para garantizar una implementación correcta.
+          </p>
         </motion.div>
 
         <div className="max-w-2xl mx-auto space-y-3">
