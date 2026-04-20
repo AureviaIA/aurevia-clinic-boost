@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { initScrollDepthTracking } from "@/lib/tracking";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import SocialProofBar from "@/components/SocialProofBar";
 import LiveSystemSection from "@/components/LiveSystemSection";
 import ImpactSection from "@/components/ImpactSection";
 import ClinicPainSection from "@/components/ClinicPainSection";
@@ -35,6 +36,7 @@ const Index = () => {
     <div className="min-h-screen bg-[#0b0b0b]">
       <Navbar />
       <HeroSection />
+      <SocialProofBar />
       <LiveSystemSection />
       <ImpactSection />
       <ClinicPainSection />
