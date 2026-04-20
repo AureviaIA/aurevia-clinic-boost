@@ -4,8 +4,10 @@ import { openWhatsApp } from "@/lib/whatsapp";
 import aureviaLogo from "@/assets/aurevia-logo.png";
 import HeroChatDemo from "@/components/HeroChatDemo";
 
-const WA_LINK_DIAGNOSTICO = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo convertir más pacientes en mi clínica");
+const WA_LINK_DIAGNOSTICO = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo funcionaría el sistema en mi clínica");
 const WA_LINK_COMO_FUNCIONA = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo funciona el sistema en mi clínica");
+const WA_LINK_PERDIENDO_SI = "https://wa.me/34640624484?text=" + encodeURIComponent("Sí, creo que estoy perdiendo pacientes ahora mismo. Quiero solucionarlo.");
+const WA_LINK_PERDIENDO_NS = "https://wa.me/34640624484?text=" + encodeURIComponent("No estoy seguro de si estoy perdiendo pacientes, quiero un diagnóstico rápido.");
 
 const FloatingParticle = ({ delay, x, y, size }: { delay: number; x: string; y: string; size: number }) => (
   <motion.div
@@ -85,14 +87,14 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-8 font-body leading-relaxed">
-              <span className="text-primary font-semibold">PatientFlow 24/7™</span> convierte cada mensaje en una cita automáticamente. Para clínicas privadas de salud, estética y bienestar.
+              El <span className="text-primary font-semibold">Sistema PatientFlow 24/7™</span> desarrollado por Aurevia atrae pacientes, responde en segundos y agenda citas automáticamente — incluso cuando estás cerrado.
             </p>
 
-            <ul className="space-y-2.5 mb-10 font-body">
+            <ul className="space-y-2.5 mb-8 font-body">
               {[
-                "Responde a pacientes en menos de 5 segundos",
-                "Automatiza citas y seguimiento 24/7",
-                "Convierte mensajes en pacientes reales",
+                "Web optimizada para generar pacientes",
+                "Respuestas en menos de 5 segundos",
+                "Conversión automática a citas",
               ].map((b) => (
                 <li key={b} className="flex items-center gap-3 text-foreground/90">
                   <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary/15 border border-primary/30">
@@ -103,6 +105,41 @@ const HeroSection = () => {
               ))}
             </ul>
 
+            {/* Micro-compromiso */}
+            <div className="mb-8 rounded-2xl border border-primary/20 bg-primary/[0.04] p-5">
+              <p className="text-sm sm:text-base font-display font-semibold text-foreground mb-3">
+                ¿Estás perdiendo pacientes ahora mismo?
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href={WA_LINK_PERDIENDO_SI}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => openWhatsApp(e, WA_LINK_PERDIENDO_SI, {
+                    section: "hero_micro_commit",
+                    button: "Sí",
+                    message: "Sí, creo que estoy perdiendo pacientes ahora mismo. Quiero solucionarlo.",
+                  })}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg gold-gradient-bg text-primary-foreground font-body font-semibold text-sm hover:opacity-95 transition-opacity"
+                >
+                  Sí
+                </a>
+                <a
+                  href={WA_LINK_PERDIENDO_NS}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => openWhatsApp(e, WA_LINK_PERDIENDO_NS, {
+                    section: "hero_micro_commit",
+                    button: "No estoy seguro",
+                    message: "No estoy seguro de si estoy perdiendo pacientes, quiero un diagnóstico rápido.",
+                  })}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-primary/40 bg-primary/5 hover:bg-primary/10 text-primary font-body font-semibold text-sm transition-colors"
+                >
+                  No estoy seguro
+                </a>
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 w-full max-w-xl">
               <a
                 href={WA_LINK_DIAGNOSTICO}
@@ -110,13 +147,13 @@ const HeroSection = () => {
                 rel="noopener noreferrer"
                 onClick={(e) => openWhatsApp(e, WA_LINK_DIAGNOSTICO, {
                   section: "hero",
-                  button: "Ver cómo convertir más pacientes",
-                  message: "Hola, quiero ver cómo convertir más pacientes en mi clínica",
+                  button: "Ver cómo funcionaría en mi clínica",
+                  message: "Hola, quiero ver cómo funcionaría el sistema en mi clínica",
                 })}
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-base sm:text-lg px-6 sm:px-10 py-5 rounded-xl btn-float animate-glow-pulse text-center"
               >
                 <ArrowRight className="w-5 h-5 shrink-0" />
-                <span className="break-words">Ver cómo convertir más pacientes</span>
+                <span className="break-words">Ver cómo funcionaría en mi clínica</span>
               </a>
               <a
                 href={WA_LINK_COMO_FUNCIONA}
@@ -135,7 +172,7 @@ const HeroSection = () => {
             </div>
 
             <p className="mt-6 text-sm text-muted-foreground font-body">
-              ✔ Implementación en 72h &nbsp;·&nbsp; ✔ Sin conocimientos técnicos &nbsp;·&nbsp; ✔ Diseñado para clínicas privadas de salud, estética y bienestar
+              ✔ Implementación en 72h &nbsp;·&nbsp; ✔ Sin conocimientos técnicos &nbsp;·&nbsp; ✔ Desarrollado por Aurevia
             </p>
 
             {/* Stats bar */}
