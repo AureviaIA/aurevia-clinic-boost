@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { initScrollDepthTracking } from "@/lib/tracking";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import LiveSystemSection from "@/components/LiveSystemSection";
@@ -24,6 +26,11 @@ import BrandTaglineFooter from "@/components/BrandTaglineFooter";
 import FloatingChat from "@/components/FloatingChat";
 
 const Index = () => {
+  useEffect(() => {
+    const cleanup = initScrollDepthTracking();
+    return cleanup;
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0b0b0b]">
       <Navbar />
