@@ -105,9 +105,9 @@ const WhatsAppAutomationSection = () => {
               transition={{ duration: 0.8 }}
               className="flex justify-center"
             >
-              <div className="relative">
+              <div className="relative w-full max-w-[320px] sm:max-w-[360px]">
                 {/* Phone frame */}
-                <div className="w-[320px] sm:w-[360px] rounded-[3rem] border-[3px] border-border/30 bg-[#111] p-2 shadow-2xl shadow-primary/5">
+                <div className="w-full rounded-[3rem] border-[3px] border-border/30 bg-[#111] p-2 shadow-2xl shadow-primary/5">
                   {/* Notch */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#111] rounded-b-2xl z-20" />
                   
