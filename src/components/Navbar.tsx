@@ -11,8 +11,9 @@ const navLinks = [
   { label: "Proceso", href: "#proceso" },
   { label: "Simulador", href: "#calculadora" },
   { label: "Testimonios", href: "#testimonios" },
-  { label: "FAQ", href: "#faq" },
 ];
+
+const desktopNavLinks = [...navLinks, { label: "FAQ", href: "#faq" }];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,7 +36,7 @@ const Navbar = () => {
         <img src={aureviaLogo} alt="Aurevia" className="h-10 w-auto shrink-0" />
 
         <div className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
+          {desktopNavLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -53,7 +54,7 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => openWhatsApp(e, WA_LINK)}
-            className="text-sm font-body font-medium px-5 py-2 rounded-lg gold-gradient-bg text-primary-foreground btn-float shrink-0"
+            className="hidden lg:inline-flex text-sm font-body font-medium px-5 py-2 rounded-lg gold-gradient-bg text-primary-foreground btn-float shrink-0"
           >
             Ver demo
           </a>
