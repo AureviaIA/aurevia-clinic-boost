@@ -8,6 +8,7 @@ const packs = [
   {
     name: "STARTER",
     subtitle: "PatientFlow 24/7™ Básico",
+    pricePrefix: "desde",
     price: "299€",
     period: "/mes",
     features: [
@@ -16,13 +17,14 @@ const packs = [
       "Cierre de citas básico",
     ],
     result: "+10% a +20% más citas",
-    cta: "Quiero activar PatientFlow 24/7™",
-    waMsg: "Hola, quiero activar PatientFlow 24/7™ versión básica",
+    cta: "Automatizar mi clínica",
+    waMsg: "Hola, quiero automatizar mi clínica con PatientFlow 24/7™ Starter",
     highlight: false,
   },
   {
     name: "GROWTH",
     subtitle: "PatientFlow 24/7™ + Web",
+    pricePrefix: "desde",
     price: "599€",
     period: "/mes",
     features: [
@@ -31,13 +33,14 @@ const packs = [
       "Seguimiento inteligente de leads",
     ],
     result: "+20% a +40% más citas",
-    cta: "Quiero activar PatientFlow 24/7™",
-    waMsg: "Hola, quiero activar PatientFlow 24/7™ con web optimizada",
+    cta: "Quiero más pacientes",
+    waMsg: "Hola, quiero más pacientes con PatientFlow 24/7™ Growth",
     highlight: true,
   },
   {
     name: "ELITE",
     subtitle: "PatientFlow 24/7™ Completo",
+    pricePrefix: "desde",
     price: "999€",
     period: "/mes",
     features: [
@@ -47,8 +50,8 @@ const packs = [
       "Soporte prioritario",
     ],
     result: "+30% a +60% más citas",
-    cta: "Activar PatientFlow 24/7™ completo",
-    waMsg: "Hola, quiero activar PatientFlow 24/7™ completo en mi clínica",
+    cta: "Activar sistema completo",
+    waMsg: "Hola, quiero activar el sistema completo PatientFlow 24/7™ Elite",
     highlight: false,
   },
 ];
@@ -81,7 +84,7 @@ const PacksSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 md:items-stretch">
           {packs.map((p, i) => (
             <motion.div
               key={p.name}
@@ -89,15 +92,15 @@ const PacksSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className={`relative rounded-2xl p-8 flex flex-col ${
+              className={`relative rounded-2xl flex flex-col ${
                 p.highlight
-                  ? "border-2 border-primary/60 bg-gradient-to-b from-primary/[0.08] to-transparent shadow-[0_0_60px_-15px_hsl(51_100%_50%/0.35)]"
-                  : "glass-card"
+                  ? "p-8 lg:p-10 border-2 border-primary/70 bg-gradient-to-b from-primary/[0.10] to-transparent shadow-[0_0_80px_-15px_hsl(51_100%_50%/0.45)] md:scale-[1.04] md:-my-2 z-10"
+                  : "p-8 glass-card opacity-95"
               }`}
             >
               {p.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 gold-gradient-bg text-primary-foreground text-xs font-body font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                  Más elegido
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 gold-gradient-bg text-primary-foreground text-xs font-body font-bold px-4 py-1.5 rounded-full uppercase tracking-wider whitespace-nowrap">
+                  ⭐ Más elegido
                 </div>
               )}
 
@@ -106,9 +109,12 @@ const PacksSection = () => {
                 <h3 className="text-2xl font-display font-bold text-foreground">{p.subtitle}</h3>
               </div>
 
-              <div className="mb-6 flex items-baseline gap-1">
-                <span className="text-5xl font-display font-bold gold-gradient-text">{p.price}</span>
-                <span className="text-muted-foreground font-body">{p.period}</span>
+              <div className="mb-6">
+                <p className="text-xs font-body text-muted-foreground uppercase tracking-wider mb-1">{p.pricePrefix}</p>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl font-display font-bold gold-gradient-text">{p.price}</span>
+                  <span className="text-muted-foreground font-body">{p.period}</span>
+                </div>
               </div>
 
               <ul className="space-y-3 mb-8 flex-1">
@@ -144,17 +150,30 @@ const PacksSection = () => {
           ))}
         </div>
 
-        {/* Garantía */}
+        {/* Push text */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mt-10 text-sm sm:text-base font-body text-muted-foreground max-w-2xl mx-auto italic"
+        >
+          La mayoría de clínicas empiezan por <span className="text-primary font-semibold not-italic">Growth</span> para ver resultados rápidos y escalar después.
+        </motion.p>
+
+        {/* Garantía estratégica */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12 max-w-3xl mx-auto rounded-2xl border border-primary/20 bg-primary/[0.03] p-6 text-center"
+          className="mt-10 max-w-3xl mx-auto rounded-2xl border border-primary/30 bg-primary/[0.04] p-6 sm:p-8 text-center"
         >
-          <p className="text-sm font-body text-primary tracking-wider uppercase mb-2">Garantía Aurevia</p>
-          <p className="text-foreground/90 font-body">
-            Si el sistema no mejora la captación de leads en <span className="text-primary font-semibold">30 días</span>, lo revisamos e iteramos sin coste hasta que funcione correctamente.
+          <p className="text-xs sm:text-sm font-body text-primary tracking-[0.2em] uppercase mb-3">
+            🛡️ Garantía estratégica · 30 días
+          </p>
+          <p className="text-foreground/90 font-body text-base sm:text-lg leading-relaxed">
+            Si el sistema no mejora la captación de leads en <span className="text-primary font-semibold">30 días</span>, revisamos e iteramos la implementación <span className="text-primary font-semibold">sin coste</span> hasta optimizar resultados.
           </p>
         </motion.div>
       </div>

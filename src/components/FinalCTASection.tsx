@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, AlertTriangle } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
 
-const WA_FINAL = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero activar el sistema completo en mi clínica");
+const WA_FINAL = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero activar el sistema en mi clínica");
 
 const FinalCTASection = () => {
   return (
@@ -31,8 +31,8 @@ const FinalCTASection = () => {
           transition={{ duration: 0.7 }}
           className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mb-6"
         >
-          <span className="text-foreground">Cada paciente que no respondes en segundos </span>
-          <span className="gold-gradient-text">ya está en otra clínica</span>
+          <span className="text-foreground">Cada día estás perdiendo pacientes que </span>
+          <span className="gold-gradient-text">ya buscan tu tratamiento</span>
           <span className="text-foreground">.</span>
         </motion.h2>
 
@@ -43,7 +43,7 @@ const FinalCTASection = () => {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="text-lg sm:text-xl text-muted-foreground font-body mb-10 max-w-2xl mx-auto"
         >
-          No es falta de pacientes. Es falta de <span className="text-primary font-semibold">velocidad</span>.
+          No es falta de pacientes. Es falta de <span className="text-primary font-semibold">sistema</span>.
         </motion.p>
 
         <motion.div
@@ -74,9 +74,9 @@ const FinalCTASection = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => openWhatsApp(e, WA_FINAL)}
-            className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-12 py-6 rounded-xl btn-float animate-glow-pulse"
+            className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-base sm:text-lg px-8 sm:px-12 py-5 sm:py-6 rounded-xl btn-float animate-glow-pulse"
           >
-            Activar PatientFlow 24/7™ ahora
+            Activar sistema en mi clínica
             <ArrowRight className="w-5 h-5" />
           </a>
           <p className="mt-8 text-base sm:text-lg text-foreground/80 font-body max-w-2xl mx-auto">

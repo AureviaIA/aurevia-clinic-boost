@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Activity, Wifi, Shield, Check } from "lucide-react";
+import { MessageCircle, ArrowRight, Check, Zap, Clock, CalendarCheck } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
 import aureviaLogo from "@/assets/aurevia-logo.png";
+import HeroChatDemo from "@/components/HeroChatDemo";
 
 const WA_LINK_DIAGNOSTICO = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo convertir más pacientes en mi clínica");
 const WA_LINK_COMO_FUNCIONA = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo funciona el sistema en mi clínica");
@@ -84,7 +85,7 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-8 font-body leading-relaxed">
-              El sistema <span className="text-primary font-semibold">PatientFlow 24/7™</span> de Aurevia ayuda a clínicas privadas de salud, estética y bienestar a responder en segundos, captar más pacientes y no perder oportunidades por falta de seguimiento.
+              <span className="text-primary font-semibold">PatientFlow 24/7™</span> convierte cada mensaje en una cita automáticamente. Para clínicas privadas de salud, estética y bienestar.
             </p>
 
             <ul className="space-y-2.5 mb-10 font-body">
@@ -149,117 +150,33 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: Floating SaaS Dashboard Mockup */}
+          {/* Right: Live chat demo (autoplay loop, no controls) */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="hidden lg:block relative"
+            className="relative w-full"
           >
-            <div className="relative animate-float-slow">
-              {/* Main dashboard card */}
-              <div className="glass-card rounded-2xl p-6 relative overflow-hidden">
-                {/* Scan line effect */}
-                <div className="absolute inset-0 scan-line pointer-events-none" />
-                
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground font-body">
-                    <Wifi className="w-3 h-3 text-green-500" />
-                    <span>Sistema conectado</span>
-                  </div>
-                </div>
+            <HeroChatDemo />
 
-                {/* Metrics row */}
-                <div className="grid grid-cols-3 gap-3 mb-5">
-                  {[
-                    { label: "Leads hoy", value: "47", color: "text-primary" },
-                    { label: "Citas", value: "12", color: "text-green-500" },
-                    { label: "Conversión", value: "37%", color: "text-primary" },
-                  ].map((m, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.8 + i * 0.15 }}
-                      className="rounded-lg bg-secondary/50 border border-border/30 p-3 text-center"
-                    >
-                      <p className="text-[10px] text-muted-foreground font-body uppercase tracking-wider">{m.label}</p>
-                      <p className={`text-xl font-display font-bold ${m.color}`}>{m.value}</p>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Mini chart */}
-                <div className="rounded-lg bg-secondary/30 border border-border/20 p-4 mb-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs text-muted-foreground font-body">Leads esta semana</span>
-                    <span className="text-xs text-green-500 font-body">↑ +23%</span>
-                  </div>
-                  <div className="flex items-end gap-1 h-12">
-                    {[35, 52, 45, 68, 58, 75, 82].map((h, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ height: 0 }}
-                        animate={{ height: `${h}%` }}
-                        transition={{ delay: 1.2 + i * 0.1, duration: 0.5 }}
-                        className="flex-1 rounded-sm gold-gradient-bg opacity-60"
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Activity feed */}
-                <div className="space-y-2">
-                  {[
-                    { text: "Nuevo lead entrante", time: "hace 12s", dot: "bg-green-500" },
-                    { text: "Cita confirmada", time: "hace 1m", dot: "bg-primary" },
-                    { text: "Respuesta enviada", time: "hace 2m", dot: "bg-green-500" },
-                  ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 1.5 + i * 0.2 }}
-                      className="flex items-center gap-2 text-xs font-body"
-                    >
-                      <span className={`activity-dot ${item.dot} animate-pulse`} />
-                      <span className="text-foreground/70">{item.text}</span>
-                      <span className="text-muted-foreground/50 ml-auto">{item.time}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Floating badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.8 }}
-                className="absolute -bottom-4 -left-6 glass-card rounded-xl px-4 py-3 flex items-center gap-2"
-              >
-                <div className="relative">
-                  <Activity className="w-4 h-4 text-green-500" />
-                  <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                </div>
-                <span className="text-xs font-body text-foreground/80">IA activa</span>
-              </motion.div>
-
-              {/* Floating shield */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 2 }}
-                className="absolute -top-3 -right-4 glass-card rounded-xl px-3 py-2 flex items-center gap-2"
-              >
-                <Shield className="w-3.5 h-3.5 text-primary" />
-                <span className="text-[10px] font-body text-foreground/70">RGPD</span>
-              </motion.div>
+            {/* Below the demo: 3 quick proof points */}
+            <div className="mt-8 grid grid-cols-3 gap-3 max-w-[420px] mx-auto">
+              {[
+                { icon: Zap, label: "Respuesta <5s" },
+                { icon: Clock, label: "Activo 24/7" },
+                { icon: CalendarCheck, label: "Citas automáticas" },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 + i * 0.1 }}
+                  className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl border border-primary/15 bg-primary/[0.03] text-center"
+                >
+                  <item.icon className="w-4 h-4 text-primary" />
+                  <span className="text-[11px] sm:text-xs font-body text-foreground/80 leading-tight">{item.label}</span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
