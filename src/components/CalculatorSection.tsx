@@ -143,7 +143,11 @@ const CalculatorSection = () => {
             href={buildSimulatorWaLink(sim)}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => openWhatsApp(e, buildSimulatorWaLink(sim))}
+            onClick={(e) => openWhatsApp(e, buildSimulatorWaLink(sim), {
+              section: "simulator",
+              button: "Ver cómo recuperar ingresos",
+              message: "Quiero recuperar los ingresos que estoy perdiendo",
+            })}
             className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground font-body font-semibold px-8 py-4 rounded-xl btn-float text-lg"
           >
             Ver cómo recuperar estos ingresos
