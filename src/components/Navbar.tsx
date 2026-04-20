@@ -11,8 +11,9 @@ const navLinks = [
   { label: "Proceso", href: "#proceso" },
   { label: "Simulador", href: "#calculadora" },
   { label: "Testimonios", href: "#testimonios" },
-  { label: "FAQ", href: "#faq" },
 ];
+
+const desktopNavLinks = [...navLinks, { label: "FAQ", href: "#faq" }];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
