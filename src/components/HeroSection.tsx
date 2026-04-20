@@ -84,7 +84,7 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-8 font-body leading-relaxed">
-              El sistema de <span className="text-primary font-semibold">Aurevia</span> ayuda a clínicas privadas de salud, estética y bienestar a responder en segundos, captar más pacientes y no perder oportunidades por falta de seguimiento.
+              El sistema <span className="text-primary font-semibold">PatientFlow 24/7™</span> de Aurevia ayuda a clínicas privadas de salud, estética y bienestar a responder en segundos, captar más pacientes y no perder oportunidades por falta de seguimiento.
             </p>
 
             <ul className="space-y-2.5 mb-10 font-body">

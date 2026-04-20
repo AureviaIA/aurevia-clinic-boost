@@ -59,7 +59,7 @@ const FinalCTASection = () => {
           </div>
           <div className="rounded-xl border border-primary/40 bg-primary/[0.06] p-5 text-left">
             <p className="text-xs font-body text-primary uppercase tracking-wider mb-2">Opción 2</p>
-            <p className="font-body text-foreground">Activar un sistema que convierte automáticamente cada mensaje en una cita.</p>
+            <p className="font-body text-foreground">Activar <span className="text-primary font-semibold">PatientFlow 24/7™</span>: el sistema que convierte automáticamente cada mensaje en una cita.</p>
           </div>
         </motion.div>
 
@@ -76,9 +76,12 @@ const FinalCTASection = () => {
             onClick={(e) => openWhatsApp(e, WA_FINAL)}
             className="inline-flex items-center gap-3 gold-gradient-bg text-primary-foreground font-body font-bold text-lg px-12 py-6 rounded-xl btn-float animate-glow-pulse"
           >
-            Activar sistema ahora
+            Activar PatientFlow 24/7™ ahora
             <ArrowRight className="w-5 h-5" />
           </a>
+          <p className="mt-8 text-base sm:text-lg text-foreground/80 font-body max-w-2xl mx-auto">
+            Aurevia convierte oportunidades en pacientes mediante el sistema <span className="text-primary font-semibold">PatientFlow 24/7™</span>.
+          </p>
         </motion.div>
       </div>
     </section>
