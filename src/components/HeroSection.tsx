@@ -85,14 +85,14 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-8 font-body leading-relaxed">
-              <span className="text-primary font-semibold">PatientFlow 24/7™</span> convierte cada mensaje en una cita automáticamente. Para clínicas privadas de salud, estética y bienestar.
+              El <span className="text-primary font-semibold">Sistema PatientFlow 24/7™</span> desarrollado por Aurevia atrae pacientes, responde en segundos y agenda citas automáticamente — incluso cuando estás cerrado.
             </p>
 
-            <ul className="space-y-2.5 mb-10 font-body">
+            <ul className="space-y-2.5 mb-8 font-body">
               {[
-                "Responde a pacientes en menos de 5 segundos",
-                "Automatiza citas y seguimiento 24/7",
-                "Convierte mensajes en pacientes reales",
+                "Web optimizada para generar pacientes",
+                "Respuestas en menos de 5 segundos",
+                "Conversión automática a citas",
               ].map((b) => (
                 <li key={b} className="flex items-center gap-3 text-foreground/90">
                   <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary/15 border border-primary/30">
