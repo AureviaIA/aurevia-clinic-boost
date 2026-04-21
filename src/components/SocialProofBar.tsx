@@ -20,7 +20,7 @@ const SocialProofBar = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
       <div className="container px-6 max-w-5xl mx-auto relative z-10">
         <p className="text-center text-[11px] sm:text-xs uppercase tracking-[0.25em] text-primary/70 font-body mb-6">
-          Resultados del Sistema PatientFlow 24/7™
+          Resultados de implementación de PatientFlow 24/7™ en clínicas privadas
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {items.map((it, i) => (

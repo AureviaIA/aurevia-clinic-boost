@@ -72,7 +72,7 @@ const ProblemsSection = () => {
 
         <p className="text-center text-base sm:text-lg font-display font-semibold text-foreground mb-12 max-w-2xl mx-auto">
           No es falta de pacientes.{" "}
-          <span className="gold-gradient-text">Es falta de un sistema que conecte todo.</span>
+          <span className="gold-gradient-text">Es falta de un sistema que gestione la demanda en tiempo real.</span>
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
