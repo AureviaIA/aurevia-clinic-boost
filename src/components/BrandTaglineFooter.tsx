@@ -30,7 +30,7 @@ const BrandTaglineFooter = () => {
               de salud, estética y bienestar.
             </p>
             <p className="text-sm font-body text-muted-foreground max-w-xl mx-auto mt-4 leading-relaxed">
-              Aurevia ayuda a convertir más consultas en pacientes reales mediante sistemas de automatización y atención instantánea.
+              Aurevia convierte tu <span className="text-primary font-semibold">web</span> en captación y tu <span className="text-primary font-semibold">WhatsApp</span> en un sistema de cierre automático.
             </p>
           </div>
 

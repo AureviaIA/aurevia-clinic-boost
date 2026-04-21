@@ -86,8 +86,12 @@ const HeroSection = () => {
               <span className="text-foreground">.</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-8 font-body leading-relaxed">
-              El <span className="text-primary font-semibold">Sistema PatientFlow 24/7™</span> desarrollado por Aurevia atrae pacientes, responde en segundos y agenda citas automáticamente — incluso cuando estás cerrado.
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-4 font-body leading-relaxed">
+              Aurevia convierte tu <span className="text-primary font-semibold">web</span> en captación de pacientes y tu <span className="text-primary font-semibold">WhatsApp</span> en un sistema automático de cierre.
+            </p>
+
+            <p className="text-base sm:text-lg text-foreground/80 max-w-2xl mb-8 font-body italic">
+              Si tienes visitas pero no citas… el problema no es el tráfico.
             </p>
 
             <ul className="space-y-2.5 mb-8 font-body">

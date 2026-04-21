@@ -3,6 +3,7 @@ import { initScrollDepthTracking } from "@/lib/tracking";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import SocialProofBar from "@/components/SocialProofBar";
+import SystemDualSection from "@/components/SystemDualSection";
 import LiveSystemSection from "@/components/LiveSystemSection";
 import ImpactSection from "@/components/ImpactSection";
 import ClinicPainSection from "@/components/ClinicPainSection";
@@ -37,6 +38,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <SocialProofBar />
+      <SystemDualSection />
       <LiveSystemSection />
       <ImpactSection />
       <ClinicPainSection />
