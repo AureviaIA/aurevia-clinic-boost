@@ -143,8 +143,7 @@ const SystemDualSection = () => {
             <span className="gold-gradient-text">Cita confirmada</span>
           </div>
           <p className="text-sm sm:text-base font-body text-foreground/80">
-            No son dos herramientas.{" "}
-            <span className="text-primary font-semibold">Es un único sistema conectado.</span>
+            <span className="text-primary font-semibold">PatientFlow 24/7™</span> es un sistema único que convierte la demanda existente en citas reales.
           </p>
           <p className="mt-3 text-sm font-body italic text-muted-foreground">
             Web capta. WhatsApp convierte.

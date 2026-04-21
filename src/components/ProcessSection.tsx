@@ -6,19 +6,19 @@ const steps = [
     icon: MessageSquare,
     num: "01",
     title: "El paciente escribe",
-    description: "A través de WhatsApp, web o redes sociales. A cualquier hora.",
+    description: "Web, WhatsApp o redes sociales. A cualquier hora.",
   },
   {
     icon: Bot,
     num: "02",
-    title: "La IA responde, cualifica y convence",
-    description: "Respuesta instantánea. Identifica necesidades. Maneja objeciones.",
+    title: "El sistema responde en segundos",
+    description: "Detecta intención, resuelve dudas y mantiene la conversación activa.",
   },
   {
     icon: CalendarCheck,
     num: "03",
-    title: "Se agenda la cita automáticamente",
-    description: "Confirmación por email y SMS. Sin intervención humana.",
+    title: "Se agenda automáticamente",
+    description: "Confirmación por email y SMS. Sin intervención del equipo.",
   },
 ];
 

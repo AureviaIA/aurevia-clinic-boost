@@ -68,7 +68,7 @@ const HeroSection = () => {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-[1.1] mb-8">
-              <span className="text-foreground">Tu clínica no necesita más visitas. Necesita </span>
+              <span className="text-foreground">Estás perdiendo pacientes que ya te están </span>
               <motion.span
                 className="gold-gradient-text inline-block"
                 style={{ textShadow: "0 0 30px hsl(51 100% 50% / 0.4)" }}
@@ -81,17 +81,17 @@ const HeroSection = () => {
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                convertirlas en pacientes
+                escribiendo
               </motion.span>
               <span className="text-foreground">.</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mb-4 font-body leading-relaxed">
-              Aurevia convierte tu <span className="text-primary font-semibold">web</span> en captación de pacientes y tu <span className="text-primary font-semibold">WhatsApp</span> en un sistema automático de cierre.
+              La mayoría de clínicas privadas pierde entre un <span className="text-primary font-semibold">30% y 60%</span> de sus pacientes potenciales por falta de respuesta inmediata y seguimiento.
             </p>
 
-            <p className="text-base sm:text-lg text-foreground/80 max-w-2xl mb-8 font-body italic">
-              Si tienes visitas pero no citas… el problema no es el tráfico.
+            <p className="text-base sm:text-lg text-foreground/85 max-w-2xl mb-8 font-body leading-relaxed">
+              <span className="text-primary font-semibold">PatientFlow 24/7™</span> convierte tu web y WhatsApp en un sistema que responde en menos de 5 segundos y agenda citas automáticamente.
             </p>
 
             <ul className="space-y-2.5 mb-8 font-body">

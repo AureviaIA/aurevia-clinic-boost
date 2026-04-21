@@ -7,7 +7,7 @@ const enc = (m: string) => `https://wa.me/34640624484?text=${encodeURIComponent(
 const packs = [
   {
     name: "STARTER",
-    subtitle: "PatientFlow 24/7™ Básico",
+    subtitle: "Capa de respuesta automática",
     pricePrefix: "desde",
     price: "299€",
     period: "/mes",
@@ -24,7 +24,7 @@ const packs = [
   },
   {
     name: "GROWTH",
-    subtitle: "PatientFlow 24/7™ + Web",
+    subtitle: "Sistema completo de flujo de pacientes",
     pricePrefix: "desde",
     price: "599€",
     period: "/mes",
@@ -41,7 +41,7 @@ const packs = [
   },
   {
     name: "ELITE",
-    subtitle: "PatientFlow 24/7™ Completo",
+    subtitle: "Infraestructura total de captación y conversión",
     pricePrefix: "desde",
     price: "999€",
     period: "/mes",

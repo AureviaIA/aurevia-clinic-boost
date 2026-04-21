@@ -58,7 +58,7 @@ const CalculatorSection = () => {
             Simula tu <span className="gold-gradient-text">impacto en ingresos</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body">
-            Mueve los sliders y descubre cuánto puedes recuperar.
+            Calcula los ingresos que estás perdiendo actualmente por falta de seguimiento y respuesta inmediata.
           </p>
           <p className="text-xs text-primary/70 font-body uppercase tracking-widest mt-3">
             Resultados estimados usando PatientFlow 24/7™
