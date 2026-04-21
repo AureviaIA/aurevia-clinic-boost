@@ -83,7 +83,10 @@ const FinalCTASection = () => {
             Quiero activar mi sistema web + WhatsApp
             <ArrowRight className="w-5 h-5" />
           </a>
-          <p className="mt-8 text-base sm:text-lg text-foreground/80 font-body max-w-2xl mx-auto">
+          <p className="mt-4 text-xs sm:text-sm text-primary/70 font-body italic">
+            sin compromiso · implementación en 72h · plazas limitadas
+          </p>
+          <p className="mt-6 text-base sm:text-lg text-foreground/80 font-body max-w-2xl mx-auto">
             Aurevia convierte oportunidades en pacientes mediante el sistema <span className="text-primary font-semibold">PatientFlow 24/7™</span>.
           </p>
         </motion.div>

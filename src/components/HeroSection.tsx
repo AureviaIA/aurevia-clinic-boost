@@ -175,7 +175,10 @@ const HeroSection = () => {
               </a>
             </div>
 
-            <p className="mt-6 text-sm text-muted-foreground font-body">
+            <p className="mt-3 text-xs text-primary/70 font-body italic">
+              sin compromiso · verás tu caso real
+            </p>
+            <p className="mt-4 text-sm text-muted-foreground font-body">
               ✔ Implementación en 72h &nbsp;·&nbsp; ✔ Sin conocimientos técnicos &nbsp;·&nbsp; ✔ Desarrollado por Aurevia
             </p>
 

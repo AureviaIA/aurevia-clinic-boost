@@ -12,6 +12,7 @@ const paths = [
     desc: "Para clínicas que tienen tráfico pero no convierten visitas en pacientes.",
     cta: "Quiero mejorar mi web",
     msg: "Quiero mejorar la conversión de mi web",
+    microcopy: "convertir visitas en pacientes",
     section: "path_web",
     highlight: false,
   },
@@ -22,6 +23,7 @@ const paths = [
     desc: "Para clínicas que quieren captar y convertir de forma automática. Web + WhatsApp conectados.",
     cta: "Quiero el sistema completo",
     msg: "Quiero el sistema completo de captación y cierre",
+    microcopy: "captar + convertir automáticamente",
     section: "path_full",
     highlight: true,
   },
@@ -32,6 +34,7 @@ const paths = [
     desc: "Para clínicas que pierden leads por no responder a tiempo.",
     cta: "Quiero automatizar mi WhatsApp",
     msg: "Quiero automatizar mis respuestas en WhatsApp",
+    microcopy: "empieza a responder en segundos",
     section: "path_whatsapp",
     highlight: false,
   },
@@ -96,6 +99,9 @@ const PathSelectorSection = () => (
               <span className={`inline-flex items-center gap-2 text-sm font-semibold font-body ${p.highlight ? "text-primary" : "text-primary/80"}`}>
                 {p.cta} →
               </span>
+              <p className="mt-2 text-[11px] text-primary/70 font-body italic">
+                {p.microcopy}
+              </p>
             </motion.a>
           );
         })}

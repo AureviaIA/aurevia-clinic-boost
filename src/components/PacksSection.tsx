@@ -19,6 +19,7 @@ const packs = [
     result: "+10% a +20% más citas",
     cta: "Automatizar mi clínica",
     waMsg: "Hola, quiero automatizar mi clínica con PatientFlow 24/7™ Starter",
+    microcopy: "empieza a recuperar pacientes ya",
     highlight: false,
   },
   {
@@ -35,6 +36,7 @@ const packs = [
     result: "+20% a +40% más citas",
     cta: "Quiero más pacientes",
     waMsg: "Hola, quiero más pacientes con PatientFlow 24/7™ Growth",
+    microcopy: "la opción más elegida por clínicas",
     highlight: true,
   },
   {
@@ -52,6 +54,7 @@ const packs = [
     result: "+30% a +60% más citas",
     cta: "Activar sistema completo",
     waMsg: "Hola, quiero activar el sistema completo PatientFlow 24/7™ Elite",
+    microcopy: "máximo rendimiento y automatización",
     highlight: false,
   },
 ];
@@ -155,6 +158,9 @@ const PacksSection = () => {
               >
                 {p.cta}
               </a>
+              <p className="mt-3 text-center text-[11px] text-primary/70 font-body italic">
+                {p.microcopy}
+              </p>
             </motion.div>
           ))}
         </div>

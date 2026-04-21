@@ -152,6 +152,9 @@ const CalculatorSection = () => {
           >
             Ver cómo recuperar estos ingresos
           </a>
+          <p className="mt-3 text-xs text-primary/70 font-body italic">
+            estimación basada en tu caso
+          </p>
         </div>
       </div>
     </section>
