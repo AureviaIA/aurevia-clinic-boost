@@ -5,17 +5,24 @@ import { openWhatsApp } from "@/lib/whatsapp";
 const WA_LINK = "https://wa.me/34640624484?text=Hola%20quiero%20este%20sistema";
 
 const before = [
-  "Web informativa sin conversión",
-  "Leads que no reciben respuesta",
-  "Pacientes que se van a la competencia",
-  "Sin automatización ni seguimiento",
+  "Web que solo informa, sin generar pacientes",
+  "WhatsApp sin respuesta o tardío",
+  "Leads que no vuelven a contactar",
+  "Huecos en agenda que no deberían existir",
 ];
 
 const after = [
-  "Sistema de IA activo 24/7",
-  "Conversión automática de leads",
-  "Respuestas instantáneas personalizadas",
-  "Citas generadas automáticamente",
+  "Web que genera pacientes, no solo visitas",
+  "WhatsApp que responde y convierte automáticamente",
+  "Seguimiento que recupera leads fríos",
+  "Agenda llena sin aumentar el tráfico",
+];
+
+const identification = [
+  "Tienes una web… pero no sabes cuántos pacientes reales te genera",
+  "Te escriben por WhatsApp… pero no siempre llegas a tiempo",
+  "Pacientes preguntan… pero no vuelven",
+  "Hay días con huecos en agenda que no deberían existir",
 ];
 
 const ProblemsSection = () => {
@@ -30,13 +37,43 @@ const ProblemsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
+          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary/80 mb-4 font-body">
+            Esto seguramente te suena
+          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-foreground">
             Antes vs <span className="gold-gradient-text">Después</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto font-body">
-            La diferencia entre una web que informa y un sistema que factura.
+            La diferencia entre una web que informa y un sistema que convierte.
           </p>
         </motion.div>
+
+        {/* Identificación emocional */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto mb-14 grid grid-cols-1 sm:grid-cols-2 gap-3"
+        >
+          {identification.map((t, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.4 }}
+              className="rounded-xl border border-primary/15 bg-primary/[0.03] px-4 py-3 text-sm font-body text-foreground/85"
+            >
+              {t}
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <p className="text-center text-base sm:text-lg font-display font-semibold text-foreground mb-12 max-w-2xl mx-auto">
+          No es falta de pacientes.{" "}
+          <span className="gold-gradient-text">Es falta de un sistema que conecte todo.</span>
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
           {/* Before */}

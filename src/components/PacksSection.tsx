@@ -99,9 +99,14 @@ const PacksSection = () => {
               }`}
             >
               {p.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 gold-gradient-bg text-primary-foreground text-xs font-body font-bold px-4 py-1.5 rounded-full uppercase tracking-wider whitespace-nowrap">
-                  ⭐ Más elegido
-                </div>
+                <>
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 gold-gradient-bg text-primary-foreground text-xs font-body font-bold px-4 py-1.5 rounded-full uppercase tracking-wider whitespace-nowrap">
+                    ⭐ Más elegido
+                  </div>
+                  <p className="absolute -top-12 left-1/2 -translate-x-1/2 text-[11px] font-body italic text-primary/80 whitespace-nowrap hidden md:block">
+                    La opción más elegida por clínicas que quieren crecer
+                  </p>
+                </>
               )}
 
               <div className="mb-6">
