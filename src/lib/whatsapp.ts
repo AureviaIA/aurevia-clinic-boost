@@ -5,7 +5,7 @@ import { trackWhatsAppClick } from "./tracking";
 export const WHATSAPP_NUMBER = "34640624484";
 
 export const buildWaLink = (message: string): string =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
 
 export interface WaMeta {
   section: string;
@@ -14,8 +14,8 @@ export interface WaMeta {
 }
 
 /**
- * Opens a wa.me link in a new tab using window.open, bypassing the SPA router.
- * NEVER uses api.whatsapp.com — only wa.me.
+ * Opens a WhatsApp link in a new tab using window.open, bypassing the SPA router.
+ * Uses api.whatsapp.com format for maximum compatibility.
  *
  * If `meta` is provided, fires a tracked `whatsapp_click` event.
  */
@@ -31,10 +31,10 @@ export const openWhatsApp = (
   if (meta) {
     trackWhatsAppClick(meta);
   }
-  // Sanity check: force wa.me, never api.whatsapp.com
+  // Ensure api.whatsapp.com format for compatibility
   const safeUrl = url.replace(
-    /https?:\/\/api\.whatsapp\.com\/send\?phone=/i,
-    "https://wa.me/"
+    /https?:\/\/wa\.me\/(\d+)\?text=/i,
+    "https://api.whatsapp.com/send?phone=$1&text="
   );
   window.open(safeUrl, "_blank", "noopener,noreferrer");
 };

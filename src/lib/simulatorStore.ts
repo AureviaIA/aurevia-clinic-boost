@@ -40,7 +40,7 @@ export const buildSimulatorWaMessage = (s: SimulatorState = state): string => {
 };
 
 export const buildSimulatorWaLink = (s: SimulatorState = state): string =>
-  `https://wa.me/34640624484?text=${encodeURIComponent(buildSimulatorWaMessage(s))}`;
+  `https://api.whatsapp.com/send?phone=34640624484&text=${encodeURIComponent(buildSimulatorWaMessage(s))}`;
 
 export const computeSimulator = (s: SimulatorState) => {
   const leadsPerdidos = s.leads * (s.noShowRate / 100);

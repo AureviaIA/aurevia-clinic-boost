@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK =
-  "https://wa.me/34640624484?text=" +
+  "https://api.whatsapp.com/send?phone=34640624484&text=" +
   encodeURIComponent("Hola, quiero ver cómo funciona PatientFlow 24/7 en mi clínica");
 
 const ImpactSection = () => {
