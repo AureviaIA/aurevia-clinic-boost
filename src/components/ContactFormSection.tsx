@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { MessageCircle, Zap } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
 
-const WA_LINK = "https://wa.me/34640624484?text=Hola,%20quiero%20implementar%20un%20sistema%20completo%20para%20captar%20m%C3%A1s%20pacientes%20y%20mejorar%20la%20conversi%C3%B3n%20en%20mi%20cl%C3%ADnica";
+const WA_LINK = "https://wa.me/34640624484?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20PatientFlow%2024%2F7%20en%20mi%20cl%C3%ADnica";
 
 const ContactFormSection = () => {
   return (

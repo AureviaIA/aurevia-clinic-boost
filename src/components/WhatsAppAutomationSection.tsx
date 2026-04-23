@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { MessageCircle, Clock, CalendarX, UserX, PhoneOff, Zap, CalendarCheck, ShieldCheck, TrendingUp, ArrowRight } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
 
-const WA_LINK = "https://wa.me/34640624484?text=Hola,%20quiero%20automatizar%20el%20WhatsApp%20de%20mi%20cl%C3%ADnica%20porque%20siento%20que%20estoy%20perdiendo%20pacientes%20por%20no%20responder%20a%20tiempo";
+const WA_LINK = "https://wa.me/34640624484?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20PatientFlow%2024%2F7%20en%20mi%20cl%C3%ADnica";
 
 const chatMessages = [
   { from: "patient", text: "Hola, me gustaría pedir cita para una limpieza dental", delay: 0 },

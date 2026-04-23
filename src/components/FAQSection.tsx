@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ChevronDown, MessageCircle } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
 
-const WA_LINK = "https://wa.me/34640624484?text=Hola,%20tengo%20algunas%20preguntas%20sobre%20el%20sistema%20y%20me%20gustar%C3%ADa%20hablar%20con%20alguien%20para%20resolverlas";
+const WA_LINK = "https://wa.me/34640624484?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20PatientFlow%2024%2F7%20en%20mi%20cl%C3%ADnica";
 
 const faqs = [
   { q: "¿Funciona con mi sistema actual?", a: "Sí. PatientFlow 24/7™ se integra con la mayoría de sistemas de gestión de clínicas y CRMs del mercado." },

@@ -5,7 +5,7 @@ import aureviaLogo from "@/assets/aurevia-logo.png";
 
 const WA_LINK_ACTIVAR =
   "https://wa.me/34640624484?text=" +
-  encodeURIComponent("Hola, quiero activar el sistema en mi clínica");
+  encodeURIComponent("Hola, quiero ver cómo funciona PatientFlow 24/7 en mi clínica");
 
 const BrandTaglineFooter = () => {
   return (

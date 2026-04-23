@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Stethoscope, ArrowRight } from "lucide-react";
 import { openWhatsApp, buildWaLink } from "@/lib/whatsapp";
 
-const WA = buildWaLink("Hola, quiero ver un diagnóstico de mi clínica");
+const WA = buildWaLink("Hola, quiero ver cómo funciona PatientFlow 24/7 en mi clínica");
 
 const DiagnosticBridgeSection = () => {
   return (

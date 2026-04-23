@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Check, Sparkles } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
 
-const enc = (m: string) => `https://wa.me/34640624484?text=${encodeURIComponent(m)}`;
+const enc = (m: string) => `https://wa.me/34640624484?text=${encodeURIComponent("Hola, quiero ver cómo funciona PatientFlow 24/7 en mi clínica")}`;
 
 const packs = [
   {
