@@ -36,12 +36,7 @@ export const useSimulator = () => useSyncExternalStore(subscribe, getSnapshot, g
 // Builds a personalized WhatsApp message using current simulator data.
 // Falls back to a generic message if data is missing/invalid.
 export const buildSimulatorWaMessage = (s: SimulatorState = state): string => {
-  const { ingresosPerdidos } = computeSimulator(s);
-  if (!ingresosPerdidos || !isFinite(ingresosPerdidos) || ingresosPerdidos <= 0) {
-    return "Hola, me gustaría ver cómo solucionar la gestión de leads en mi clínica.";
-  }
-  const formatted = Math.round(ingresosPerdidos).toLocaleString("es-ES");
-  return `Hola, he estado usando la calculadora y creo que puedo estar perdiendo aproximadamente ${formatted}€ al mes por no gestionar bien los leads. Me gustaría ver cómo solucionarlo en mi clínica.`;
+  return "Hola, quiero ver cómo funciona PatientFlow 24/7 en mi clínica";
 };
 
 export const buildSimulatorWaLink = (s: SimulatorState = state): string =>
