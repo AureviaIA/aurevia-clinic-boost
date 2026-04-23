@@ -4,10 +4,10 @@ import { openWhatsApp } from "@/lib/whatsapp";
 import aureviaLogo from "@/assets/aurevia-logo.png";
 import HeroChatDemo from "@/components/HeroChatDemo";
 
-const WA_LINK_DIAGNOSTICO = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo funcionaría el sistema en mi clínica");
-const WA_LINK_COMO_FUNCIONA = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo funciona el sistema en mi clínica");
-const WA_LINK_PERDIENDO_SI = "https://wa.me/34640624484?text=" + encodeURIComponent("Sí, creo que estoy perdiendo pacientes ahora mismo. Quiero solucionarlo.");
-const WA_LINK_PERDIENDO_NS = "https://wa.me/34640624484?text=" + encodeURIComponent("No estoy seguro de si estoy perdiendo pacientes, quiero un diagnóstico rápido.");
+const WA_LINK_DIAGNOSTICO = "https://wa.me/34640624484?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20PatientFlow%2024%2F7%20en%20mi%20cl%C3%ADnica";
+const WA_LINK_COMO_FUNCIONA = "https://wa.me/34640624484?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20PatientFlow%2024%2F7%20en%20mi%20cl%C3%ADnica";
+const WA_LINK_PERDIENDO_SI = "https://wa.me/34640624484?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20PatientFlow%2024%2F7%20en%20mi%20cl%C3%ADnica";
+const WA_LINK_PERDIENDO_NS = "https://wa.me/34640624484?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20PatientFlow%2024%2F7%20en%20mi%20cl%C3%ADnica";
 
 const FloatingParticle = ({ delay, x, y, size }: { delay: number; x: string; y: string; size: number }) => (
   <motion.div

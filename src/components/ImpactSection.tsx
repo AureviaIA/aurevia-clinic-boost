@@ -4,7 +4,7 @@ import { openWhatsApp } from "@/lib/whatsapp";
 
 const WA_LINK =
   "https://wa.me/34640624484?text=" +
-  encodeURIComponent("Hola, quiero esto en mi clínica");
+  encodeURIComponent("Hola, quiero ver cómo funciona PatientFlow 24/7 en mi clínica");
 
 const ImpactSection = () => {
   return (
