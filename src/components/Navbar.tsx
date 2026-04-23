@@ -58,6 +58,14 @@ const Navbar = () => {
           >
             Ver demo
           </a>
+          <a
+            href="https://google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:inline-flex text-sm font-body font-medium px-5 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors shrink-0"
+          >
+            Test sistema
+          </a>
           <button className="lg:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menú">
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
