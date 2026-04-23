@@ -4,7 +4,7 @@ import { openWhatsApp } from "@/lib/whatsapp";
 import aureviaLogo from "@/assets/aurevia-logo.png";
 
 const WA_LINK_ACTIVAR =
-  "https://api.whatsapp.com/send?phone=34640624484&text=" +
+  "https://wa.me/34640624484?text=" +
   encodeURIComponent("Hola, quiero ver cómo funciona PatientFlow 24/7 en mi clínica");
 
 const BrandTaglineFooter = () => {

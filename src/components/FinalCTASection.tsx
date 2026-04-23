@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, AlertTriangle } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
 
-const WA_FINAL = "https://api.whatsapp.com/send?phone=34640624484&text=" + encodeURIComponent("Hola, quiero ver cómo funciona PatientFlow 24/7 en mi clínica");
+const WA_FINAL = "https://wa.me/34640624484?text=" + encodeURIComponent("Hola, quiero ver cómo funciona PatientFlow 24/7 en mi clínica");
 
 const FinalCTASection = () => {
   return (

@@ -13,7 +13,7 @@ import drMoralesImg from "@/assets/testimonial-dr-morales.jpg";
 import lauraSanchezImg from "@/assets/testimonial-laura-sanchez.jpg";
 import { openWhatsApp } from "@/lib/whatsapp";
 
-const WA_LINK = "https://api.whatsapp.com/send?phone=34640624484&text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20PatientFlow%2024%2F7%20en%20mi%20cl%C3%ADnica";
+const WA_LINK = "https://wa.me/34640624484?text=Hola%2C%20quiero%20ver%20c%C3%B3mo%20funciona%20PatientFlow%2024%2F7%20en%20mi%20cl%C3%ADnica";
 
 const testimonials = [
   { quote: "El sistema nos ha generado un 40% más de citas sin aumentar tráfico. Ya no perdemos leads.", name: "Dr. López", clinic: "Clínica Estética Renovar", image: drLopezImg },
