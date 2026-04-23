@@ -30,48 +30,74 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0b0b0b]">
+    <div className="min-h-screen bg-section-base">
       <Navbar />
-      {/* 1. HERO */}
+      {/* 1. HERO - gradiente sutil */}
       <HeroSection />
-      {/* 2. MÉTRICAS / prueba rápida */}
-      <SocialProofBar />
-      {/* 3. DEMO en vivo (chat + dashboard) */}
+      {/* 2. MÉTRICAS / prueba rápida - fondo alternativo */}
+      <div className="bg-section-alt">
+        <SocialProofBar />
+      </div>
+      {/* 3. DEMO en vivo (chat + dashboard) - fondo base */}
       <LiveSystemSection />
-      {/* 4. PROBLEMA con métricas grandes */}
-      <ClinicPainSection />
-      {/* 5. SOLUCIÓN dos columnas: Web + WhatsApp */}
-      <SystemDualSection />
-      {/* 6. CÓMO FUNCIONA — 3 pasos */}
+      {/* 4. PROBLEMA con métricas grandes - fondo elevado */}
+      <div className="bg-section-elevated">
+        <ClinicPainSection />
+      </div>
+      {/* 5. SOLUCIÓN dos columnas: Web + WhatsApp - fondo alternativo */}
+      <div className="bg-section-alt">
+        <SystemDualSection />
+      </div>
+      {/* 6. CÓMO FUNCIONA — 3 pasos - fondo base */}
       <ProcessSection />
-      {/* 7. SIMULACIÓN paso a paso del flujo (<5 min) */}
-      <SimulationSection />
-      {/* 8. IMPACTO — frase ancla + CTA */}
-      <ImpactSection />
-      {/* 9. SIMULADOR de ingresos */}
+      {/* 7. SIMULACIÓN paso a paso del flujo - fondo elevado */}
+      <div className="bg-section-elevated">
+        <SimulationSection />
+      </div>
+      {/* 8. IMPACTO — frase ancla + CTA - fondo alternativo */}
+      <div className="bg-section-alt">
+        <ImpactSection />
+      </div>
+      {/* 9. SIMULADOR de ingresos - fondo base */}
       <CalculatorSection />
-      {/* 10. BENEFICIOS grid 2x3 */}
-      <BenefitsSection />
-      {/* 11. ANTES vs DESPUÉS */}
-      <ProblemsSection />
-      {/* 12. PATH selector — 3 opciones */}
+      {/* 10. BENEFICIOS grid 2x3 - fondo elevado */}
+      <div className="bg-section-elevated">
+        <BenefitsSection />
+      </div>
+      {/* 11. ANTES vs DESPUÉS - fondo alternativo */}
+      <div className="bg-section-alt">
+        <ProblemsSection />
+      </div>
+      {/* 12. PATH selector — 3 opciones - fondo base */}
       <PathSelectorSection />
-      {/* 13. PLANES */}
-      <PacksSection />
-      {/* 14. GARANTÍA / sin riesgo */}
-      <SecuritySection />
-      {/* 15. POR QUÉ DIFERENTES */}
+      {/* 13. PLANES - fondo elevado */}
+      <div className="bg-section-elevated">
+        <PacksSection />
+      </div>
+      {/* 14. GARANTÍA / sin riesgo - fondo alternativo */}
+      <div className="bg-section-alt">
+        <SecuritySection />
+      </div>
+      {/* 15. POR QUÉ DIFERENTES - fondo base */}
       <WhyDifferentSection />
-      {/* 16. TESTIMONIOS */}
-      <TestimonialsSection />
-      {/* 17. FAQ */}
-      <FAQSection />
-      {/* 18. CONTACTO */}
+      {/* 16. TESTIMONIOS - fondo elevado */}
+      <div className="bg-section-elevated">
+        <TestimonialsSection />
+      </div>
+      {/* 17. FAQ - fondo alternativo */}
+      <div className="bg-section-alt">
+        <FAQSection />
+      </div>
+      {/* 18. CONTACTO - fondo base */}
       <ContactFormSection />
-      {/* 19. CIERRE binario */}
-      <FinalCTASection />
-      {/* Footer */}
-      <BrandTaglineFooter />
+      {/* 19. CIERRE binario - fondo elevado */}
+      <div className="bg-section-elevated">
+        <FinalCTASection />
+      </div>
+      {/* Footer - fondo base */}
+      <div className="bg-section-base">
+        <BrandTaglineFooter />
+      </div>
       <FloatingChat />
     </div>
   );

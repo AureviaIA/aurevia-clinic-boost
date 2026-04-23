@@ -23,32 +23,27 @@ const FloatingParticle = ({ delay, x, y, size }: { delay: number; x: string; y: 
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 animated-gradient-bg" />
+    <section className="relative min-h-screen flex items-center overflow-hidden hero-gradient">
+      {/* Radial glow sutil */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/[0.03] blur-[180px]" />
+      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-primary/[0.02] blur-[120px]" />
       
-      {/* Radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-primary/[0.04] blur-[200px]" />
-      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-primary/[0.03] blur-[150px]" />
-      
-      {/* Grid pattern overlay */}
+      {/* Grid pattern overlay muy sutil */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundSize: "80px 80px",
         }}
       />
 
-      {/* Floating particles */}
-      <FloatingParticle delay={0} x="10%" y="20%" size={4} />
-      <FloatingParticle delay={1} x="80%" y="30%" size={3} />
-      <FloatingParticle delay={2} x="25%" y="70%" size={5} />
-      <FloatingParticle delay={0.5} x="70%" y="60%" size={3} />
-      <FloatingParticle delay={1.5} x="50%" y="15%" size={4} />
-      <FloatingParticle delay={3} x="90%" y="75%" size={3} />
+      {/* Floating particles reducidos */}
+      <FloatingParticle delay={0} x="15%" y="25%" size={3} />
+      <FloatingParticle delay={1.5} x="75%" y="35%" size={2} />
+      <FloatingParticle delay={2.5} x="30%" y="65%" size={3} />
+      <FloatingParticle delay={0.8} x="65%" y="70%" size={2} />
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
 
       <div className="container relative z-10 px-6 py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
